@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}A-propos | Nouredine Bechiri{% endblock title %}
+
+{% block content %}
+
+<section id="career">
+    <div class="container">
+        <h2 class="section-title t-left" data-lang="fr"><b>Mon parcours</b></h2>
+        <h2 class="section-title t-left" data-lang="en" style="display:none"><b>My Professional Journey</b></h2>
+
+        <div class="career-container">
+            <div class="career-text">
+                <div class="timeline-item">
+                    <p data-lang="fr">Passionné par les nouvelles technologies depuis mon plus jeune âge, j’ai naturellement choisi de poursuivre des études en informatique à l’université. En 2014, j’ai obtenu un <b>Master en informatique</b> à l’Université Mouloud Mammeri de Tizi Ouzou (Algérie). Spécialisation en Réseaux, Mobilité et Systèmes Embarqués.</p>
+                    <p data-lang="en" style="display:none">Passionate about new technologies from a young age, I naturally chose to pursue studies in computer science at university. In 2014, I earned a <b>Master’s degree</b> in Computer Science from Mouloud Mammeri University of Tizi Ouzou (Algeria). Specializing in Networks, Mobility and Embedded Systems.</p>
+                    
+                    <p data-lang="fr">J’ai débuté ma carrière en tant qu’Administrateur Systèmes et Réseaux dans une entreprise algérienne du secteur de l’audiovisuel. Après trois ans d’expérience, j’ai rejoint une société du domaine des transports où j’ai évolué en tant qu’Ingénieur Systèmes et Infrastructures.</p>
+                    <p data-lang="en" style="display:none">I began my career as a Systems and Network Administrator in an Algerian company in the audiovisual sector. After three years of experience, I joined a company in the transportation sector, where I advanced to the role of Systems and Infrastructure Engineer.</p>
+                    
+                    <p data-lang="fr">Mon expertise s’est consolidée au fil des années, soutenue par l’obtention de certifications reconnues telles que : <b>VCP-DCV, VCP-NV et VMware vSAN Specialist.</b> </p>
+                    <p data-lang="en" style="display:none">My expertise has been strengthened over the years, supported by obtaining recognized certifications such as: <b>VCP-DCV, VCP-NV and VMware vSAN Specialist.</b> </p>
+                    
+                    <p data-lang="fr">Aujourd’hui, j’occupe le poste de Chef de Division Administration Des Systèmes, où je pilote une équipe en charge de la gestion, de la sécurisation et de l’évolution des systèmes d’information de l’entreprise.</p>
+                    <p data-lang="en" style="display:none">Today, I hold the position of Head of Systems Administration Division, where I lead a team responsible for managing, securing, and evolving the company’s IT systems.</p>
+                    <h2 class="section-title t-left" data-lang="fr"><b>COMPÉTENCES</b></h2>
+                    <h2 class="section-title t-left" data-lang="en" style="display:none"><b>SKILLS</b></h2>
+                    <ul class="skills-ul">
+                        <li data-lang="fr">Expert en: Active Directory, Exchange, SharePoint et Skype for Business</li>
+                        <li data-lang="en" style="display:none">Expert on : Active Directory, Exchange, SharePoint and Skype for Business</li>
+
+                        <li data-lang="fr">Maîtrise des produits de virtualisation VMware vSphere, vSAN et NSX</li>
+                        <li data-lang="en" style="display:none">Proficient in VMware virtualization products: vSphere, vSAN, and NSX</li>
+
+                        <li data-lang="fr">Compétences avancées des produits de sécurité Fortinet: FortiGate, FortiWeb et FortiMail</li>
+                        <li data-lang="en" style="display:none">Advanced skills in Fortinet security products: FortiGate, FortiWeb, and FortiMail</li>
+
+                        <li data-lang="fr">Conception de réseaux : Configuration des routeurs et switch CISCO</li>
+                        <li data-lang="en" style="display:none">Design of IT networks: Configuration of CISCO routers and switches</li>
+
+                        <li data-lang="fr">De bonnes connaissances des distributions Linux (Debian et Redhat)</li>
+                        <li data-lang="en" style="display:none">Good knowledge of Linux distributions (Debian and RedHat)</li>
+                        
+                        <li data-lang="fr">Langage de programmation & framework: Python et Django</li>
+                        <li data-lang="en" style="display:none">Programming languages & framework: JAVA and Python</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="career-image">
+                <img src="{% static 'images/profile2.jpg' %}" alt="Parcours Image">
+                <p data-lang="fr">Algérien, 38 ans</p>
+                <p data-lang="en" style="display:none">Algerian, 38 years old</p>
+                <p>E-Mail: nouredine.bechiri@gmail.com</p>
+               
+                <ul class="icon-list">
+                    <li class="linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/nouredinebechiri/" target="_blank">LinkedIn</a>
+                    </li>
+                    <li class="email">
+                        <i class="fab fa-twitter"></i>
+                        <a href="https://www.x.com/nobechiri" target="_blank">Twitter</a>
+                    </li>
+                    <li class="telegram">
+                        <i class="fab fa-telegram"></i>
+                        <a href="https://t.me/nouredinebechiri" target="_blank">Telegram</a>
+                    </li>
+                </ul>  
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

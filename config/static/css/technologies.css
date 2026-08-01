@@ -1,0 +1,56 @@
+.technologies{
+  background-color: var(--gallery);
+}
+
+.carouselTechnology {
+  overflow: hidden;
+  max-width: 1180px;
+  margin: auto;
+  /* cursor: pointer; */
+}
+
+.trackTechnology {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  will-change: transform;
+}
+
+.item {
+  border-radius: 12px;
+  padding: 10px 15px;
+  max-width: 370px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.icon {
+  width: 50px;
+
+}
+.icon-django {
+  width: 130px;
+  margin-left: 20px;
+
+}
+
+.title {
+  font-size: 16px;
+  color: #0f172a;
+}
+
+.desc {
+  font-size: 14px;
+
+}

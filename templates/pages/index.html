@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}IT Solution Architect{% endblock title %}
+{% block content %}
+<header id="hero" class="hero center">
+
+    <div class="container">  
+        <img src="{% static "images/profile.jpg" %}" alt="Nouredine Bechiri">      
+        <p class="section-title" data-lang="fr"><span>Besoin d'aide ?</span> Digitalisation, Cybersécurité, Conseils</p>
+        <p class="section-title" data-lang="en" style="display:none"><span>Need help?</span> Digitalization, Cybersecurity, Consulting</p>
+        <p data-lang="fr">
+            Vous souhaitez optimiser la performances et la sécurité de vos systèmes informatiques ?<br>
+            N'hésitez pas à me contacter pour vous accompagner dans cette démarche.
+        </p>
+        <p data-lang="en" style="display:none">Do you want to improve the performance and security of your IT systems ? <br>
+            Feel free to contact me for guidance and support in this process.
+        </p>
+        <ul class="icon-list">
+            <li class="linkedin">
+                <i class="fab fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/nouredinebechiri/" target="_blank">LinkedIn</a>
+            </li>
+            <li class="email">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:nouredine.bechiri@gmail.com">Email</a>
+            </li>
+            <li class="telegram">
+                <i class="fab fa-whatsapp"></i>
+                
+                <a href="https://wa.me/qr/CGO7UGQV2W7NE1" target="_blank">WhatsApp</a>
+                <!-- <a href="https://t.me/nouredinebechiri" target="_blank">Telegram</a> -->
+            </li>
+        </ul>
+    </div>
+    <div class="footer-texte">
+    <style>
+.footer-texte {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-texte p {
+  margin: 80px;
+}
+
+/* Sur mobile */
+@media (max-width: 600px) {
+    .footer-texte p {
+    margin: 0px;
+}
+  .footer-texte {
+    flex-wrap: wrap;
+  }
+
+  .footer-texte p:nth-child(1) {
+    order: 1;
+  }
+
+  .footer-texte p:nth-child(3) {
+    order: 2;
+  }
+
+  .footer-texte p:nth-child(2) {
+    order: 3;
+    width: 100%;       /* force le passage à la ligne suivante */
+    text-align: center;
+    margin-top: 40px;
+  }
+}
+
+
+                </style>
+        <p>Nouredine Bechiri <br> IT Solution Architect</p>
+        <p><a style="color: white;" href="https://www.credly.com/users/nouredinebechiri" target="_blank">Certifié VMware <br> vSphere, vSAN et NSX</a></p>
+        <p>+12 <br> Années d'experiences</p>
+    </div>
+</header>
+
+<!-- <span class="lang-toggle" id="lang-toggle"></span> -->
+<section id="skills" class="skills-section">
+    <div class="container reveal">       
+        <h2 class="section-title" data-lang="fr"><span>Compétences</span> dans trois domaines clés</h2>
+        <h2 class="section-title" data-lang="en" style="display:none"><span>Skills</span> in thee key areas</h2>
+            <p data-lang="fr">Voici un aperçu.</p>
+            <p data-lang="en" style="display:none">Here’s an overview.</p>
+        <div class="skills" id="skillsContainer"></div>         
+    </div>    
+</section>
+
+
+<section id="technologies" class="technologies">
+    <div class="container reveal">
+        <h2 data-lang="fr" class="section-title">Je prends en charge ces <b>technologies</b> de bout en bout,</h2>
+        <h2 data-lang="en" style="display:none" class="section-title">I handle these <b>technologies</b> end-to-end,</h2>
+        <p data-lang="fr">de la conception à la protection opérationnelle.</p>
+        <p data-lang="en" style="display:none">from design to operational protection.</p>
+
+        <div class="carouselTechnology" id="carouselTechnology">
+            <div class="trackTechnology" id="trackTechnology">
+                    {% for technology in technologies %}
+                        <div class="item">
+                            <div class="header">
+                                <img class="icon" src="{% static technology.icon %}" alt="">
+                                <div class="title"><a href="#" target="_blank">{{technology.title}}</a></div>
+                            </div>
+                            <div data-lang="fr" class="desc">{{technology.desc_fr}}</div>
+                            <div data-lang="en" style="display:none" class="desc">{{technology.desc_en}}</div>
+                            <div class="ligne"></div>
+                            <div data-lang="fr" class="desc"><b>{{technology.tags_fr}}</b></div>
+                            <div data-lang="en" style="display:none" class="desc"><b>{{technology.tags_en}}</b></div>
+                        </div>
+                    {% endfor %}
+            </div>
+            <script>
+                // 🎬 animation
+                let position = 0; let speed = 1; let isPaused = false;
+                function animate() { 
+                    if (!isPaused) {
+                        position -= speed; 
+                    if (Math.abs(position) >= trackTechnology.scrollWidth / 2) {position = 0;}
+                        trackTechnology.style.transform = `translateX(${position}px)`;
+                    }
+                    requestAnimationFrame(animate);
+                }
+                animate();
+                // ⏸ PAUSE AU HOVER / FOCUS
+                carouselTechnology.addEventListener("mouseenter", () => {
+                    isPaused = true;
+                });
+                carouselTechnology.addEventListener("mouseleave", () => {
+                    isPaused = false;
+                });
+            </script>
+        </div> 
+
+        <div style="margin-top: 40px; text-align: center;">
+            <p data-lang="fr" style="font-style: italic">Je <b>développe</b> également des applications web, des scripts d'automatisation avec Python et Django.</p>
+            <p data-lang="en" class="" style="display:none; font-style: italic;">I also <b>develop</b> web applications and automation scripts using Python and Django.</p>
+            <img class="icon" src="{% static "images/python.png" %}" alt="">
+            <img class="icon-django" src="{% static "images/django.png" %}" alt="">
+        </div>
+    </div>
+</section>
+
+<!-- Certifications Slider-->
+<section class="certifications-section">
+    <div class="container carousel" id="carousel">
+        <h2 data-lang="fr" class="center">MES CERTIFICATIONS</h2>
+        <h2 data-lang="en" style="display:none" class="center">MY CERTIFICATIONS</h2>
+        <div class="carousel-track" id="track">
+            
+            {% for certification in certifications %}
+                <div class="carousel-slide" style="visibility: visible;">
+                    <img src="/static/images/vcp-dcv.png" alt="Logo">
+                    <h3>
+                        <a href="https://cp.certmetrics.com/vmware/en/public/verify/credential/5fbd473a41144071a71f249fd17191d5" target="_blank">
+                            <span data-lang="fr">{{certification.title_fr}}</span>
+                            <span data-lang="en" style="display:none">{{certification.title_en}}</span>
+                        </a>
+                    </h3>
+                    <p data-lang="fr">{{certification.desc_fr}}</p>
+                    <p data-lang="en" style="display:none">{{certification.desc_en}}</p>
+                    <p><span data-lang="fr">Livrée par </span> <span data-lang="en" style="display:none">Issued by </span><a href="https://www.vmware.com/" target="_blank">{{certification.organization}}</a>, <span data-lang="fr">Organisation</span> <span data-lang="en" style="display:none">Organization</span></p>
+                    
+                </div>
+            {% endfor %}
+
+        </div>
+        <button class="carousel-btn prev">&#10094;</button>
+        <button class="carousel-btn next">&#10095;</button>
+        <div class="carousel-dots" id="dots"></div>
+        <a href="https://www.credly.com/users/nouredinebechiri" target="_blank"><img src="{% static "images/credly.png" %}" class="credly-img" alt="Credly"></a>
+    </div>
+</section>
+
+
+<section id="extra-info" class="career-section">
+    <div class="container small-container ">
+        <div class="">
+            <div class="career-container career-content">
+                <div class="tfc-text ">
+                    <img src="https://img.icons8.com/?size=100&id=63306&format=png&color=000000" alt="Telegram">
+                    <h2>Telegram Free Consulting</h2>
+                    <p data-lang="fr">Conseils pour passionnés d'informatique </p>
+                    <p data-lang="en" style="display:none">Tips for IT Enthusiasts</p>
+                    <p data-lang="fr">👉 C’est simple, gratuit et sans engagement.</p>
+                    <p data-lang="en" style="display:none">👉 It’s simple, free, and without obligation.</p>
+                </div>
+                <div class="tfc-image reveal">
+                    <p data-lang="fr">Tu es étudiant en informatique ou simplement passionné par le domaine ? Tu débutes et tu as des questions, besoin d’orientation, de conseils sur les outils, les formations ou les bonnes pratiques ?</p>
+                    <p data-lang="en" style="display:none">Are you a computer science student or simply passionate about the field? Just getting started and have questions, need guidance, or advice on tools, training, or best practices?</p>
+                    <p data-lang="fr">Je t’offre un accompagnement gratuit via Telegram. Pose tes questions, partage tes doutes ou tes projets, je suis là pour t’écouter et t’aider à progresser.</p>
+                    <p data-lang="en" style="display:none">I offer free support via Telegram. Ask your questions, share your doubts or projects — I’m here to listen and help you progress.</p>
+                    <a data-lang="fr"  class="telegram-btn" href="https://t.me/nouredinebechiri" target="_blank">Discutons sur Telegram</a>
+                    <a data-lang="en" style="display:none" class="telegram-btn" href="https://t.me/nouredinebechiri" target="_blank">Let’s chat on Telegram</a>
+                    <p data-lang="fr">Parce que tout le monde a commencé quelque part.🚀</p>
+                    <p data-lang="en" style="display:none">Because everyone started somewhere. 🚀</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="career" class="career">
+    <div class="container reveal">
+        <div class="career-container">
+            <div class="career-text">
+                <div class="timeline-item">
+                    <p class="t-left" data-lang="fr">À propos</p>
+                    <p class="t-left" data-lang="en" style="display:none">About</p>
+                    <h2 class="section-title t-left" data-lang="fr"><b>Qui suis-je ?</b></h2>
+                    <h2 class="section-title t-left" data-lang="en" style="display:none"><b>Who Am I?</b></h2>
+                    <p>Je suis ingénieur en informatique, spécialisé dans la conception et l’architecture des systèmes et réseaux. Titulaire d'un Master en Informatique de l'UMMTO <p>
+                    <p>Je mets en œuvre des solutions techniques sur mesure, adaptées aux besoins des entreprises: +12 ans en entreprise en tant qu'Ingénieur Systèmes et Réseaux - Echorouk TV, SNTF.</p>
+                    <p>Au fil de ces années, j'ai conçu et déployé plusieurs projets répondant aux besoins de mes employeurs, couvrant l'infrastructure virtuelle, l'architecture réseaux et la cybersécurité.</p>
+                    <p>Je suis également développeur web avec Python et Django</p>
+                </div>
+                <a href="{% url "about" %}">Mon parcours en détail </a>
+            </div>
+            <div class="career-image reveal">
+                <img src="{% static 'images/profile2.jpg' %}" alt="Parcours Image">
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+

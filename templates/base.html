@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/technologies.css" %}">
+    
+</head>
+<body>
+{% include "parts/navbar.html" %}
+
+{% block content %}
+{% endblock content %}
+
+{% include "parts/footer.html" %}
+
+<script src="{% static 'js/skills.js' %}"></script>
+<script src="{% static 'js/gallery.js' %}"></script>
+<script src="{% static 'js/technologies.js' %}"></script>
+<script src="{% static 'js/certification.js' %}"></script>
+<script>
+function toggleMenu(){
+document.getElementById("nav").classList.toggle("open");
+}
+
+const obs=new IntersectionObserver(e=>{e.forEach(i=>i.isIntersecting&&i.target.classList.add("show"))},{threshold:.15});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+
+function updateFlag(){
+const frVisible=document.querySelector('[data-lang="fr"]').style.display!=='none';
+document.getElementById('lang-toggle').innerHTML=
+frVisible
+?'<img src="{% static "images/uk.png" %}" onclick="setLang(`en`)">'
+:'<img src="{% static "images/fra.png" %}" onclick="setLang(`fr`)">';
+}
+
+function setLang(lang){
+localStorage.setItem('siteLang',lang);
+document.querySelectorAll('[data-lang="fr"]').forEach(e=>e.style.display=lang==='fr'?'':'none');
+document.querySelectorAll('[data-lang="en"]').forEach(e=>e.style.display=lang==='en'?'':'none');
+updateFlag();
+}
+
+setLang(localStorage.getItem('siteLang')||'fr');  
+
+// let idx=0;
+// const car=document.getElementById("carousel");
+// function move(d){
+// idx=(idx+d+car.children.length)%car.children.length;
+// car.style.transform=`translateX(-${idx*100}%)`;
+// }
+// setInterval(()=>move(1),6000);
+</script>
+
+
+</body>
+</html>
+
+
+
+
+

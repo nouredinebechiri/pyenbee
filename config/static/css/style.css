@@ -1,0 +1,590 @@
+:root{
+--bg:#fff;
+--text:#1f1f1f;
+--muted:#998c8c;
+--primary:#70b3c4;
+--card:#f6f6f6;
+--border:#e2e2e2;
+--bege:#faf8f4;
+--gallery:#fff;
+--telegram-btn:#006f99;
+--telegram-fc:#f0f8ff;
+--telegram-fc-sec:#f4f4f4;
+--logo:#ba705d;
+--link:#1b1a17;
+--custom-black:#1b1a17;
+/* --nav-height:80px; */
+}
+*{box-sizing:border-box}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body{
+    margin:0;
+    font-family:'Open Sans',sans-serif;
+    background:var(--bg);
+    color:var(--custom-black);
+    line-height:1.65;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.nb-logo{
+    height: 40px;
+}
+a{text-decoration: none;color:var(--link);font-weight: bold;text-decoration: underline;}
+a:hover{text-decoration: underline;}
+section{
+    padding:80px 10px;
+    flex: 1;
+    scroll-margin-top: var(--nav-height);
+}
+.container{
+    max-width:1180px;
+    margin:auto;
+}
+
+/* NEW SMALLER SECTION WIDTH */
+.small-container{
+max-width:1000px;
+margin:auto;
+padding:40px 0px;
+
+}
+
+/* NAV */
+nav{
+/* position:fixed;
+top:0; */
+width:100%;
+/* height:var(--nav-height); */
+background:rgba(0,0,0,65);
+backdrop-filter:blur(6px);
+z-index:1000
+}
+.nav-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:1180px;
+margin:auto;
+padding: 10px;
+}
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:22px;
+font-size:14px
+}
+.lang-toggle img{
+    position: absolute;
+    top: 170px;
+    right: 30px;
+    width: 30px;
+    cursor:pointer;
+    vertical-align: middle;
+}
+
+/* HAMBURGER BUTTON */
+.hamburger{
+display:none;
+flex-direction:column;
+gap:4px;
+cursor:pointer;
+}
+.hamburger span{
+width:26px;
+height:3px;
+background:white;
+border-radius:4px;
+transition:.3s;
+}
+
+/* MOBILE MENU */
+nav .menu{
+display:flex;
+align-items:center;
+transition:.3s;
+}
+nav.open .menu{
+display:block;
+position:absolute;
+top:60px;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.5);
+padding:20px;
+text-align:center;
+}
+nav.open .menu a{
+display:block;
+margin:14px 0;
+}
+
+/* HERO */
+.hero{
+min-height:92vh;
+background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.6)),url("/static/images/cover.jpg") center/cover no-repeat;
+display:flex;
+justify-content:center;
+/* text-align:center; */
+color:#fff;
+flex-direction:column;
+
+}
+.hero .container{
+display:flex;
+flex-direction:column;
+align-items:center;
+animation:fadeHero 1.2s ease
+}
+
+.hero img{
+width:120px;
+border-radius:50%;
+border:3px solid #fff;
+margin-bottom:20px
+}
+
+.icon-list {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0px 20px 0px;
+}
+
+.icon-list li {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.icon-list i {
+    margin-right: 8px;
+    font-size: 22px;
+}
+
+.linkedin i {
+    color: white;
+}
+
+.email i {
+    color: white;
+}
+
+.telegram i {
+    color: white;
+}
+.icon-list a {
+    text-decoration: none;
+    color: white;
+}
+.icon-list a:hover{
+    text-decoration: underline;
+}
+.header-contact-list img{
+    width: 40px;
+}
+@keyframes fadeHero{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:none}
+}
+
+/* TITRES */
+.section-title {
+    margin:0px; 
+    font-size: 24px; 
+    font-weight: normal;
+}
+.section-title-l{
+    margin:0px; font-size: 24px; font-weight: normal;
+}
+.section-title span{
+    font-weight: bold;
+}
+/* PRESENTATION */
+.presentation p{
+    font-size:18px;
+    font-style: italic;
+}
+
+/* SKILLS */
+.skills{
+   
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px
+}
+.skills-icon{
+    width: 30px;
+    /* margin: auto; */
+}
+.skills h3{
+    font-size: 18px;
+    margin: 0px;
+    font-weight: bold;
+}
+.skill-card{
+padding:30px;
+transition:.3s;
+background-color: #fff;
+border-radius: 20px;
+}
+
+/* CERTIFICATIONS */
+.certifications-section{
+ background-color: var(--bege);
+}
+.certifications-container{
+    position:relative;overflow:hidden; 
+}
+.certifications{
+    display:flex;
+    transition:.5s
+}
+.certifications div{
+    min-width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+}
+.certifications img{
+    width:100px;
+    border-radius:100px;
+}
+
+.certifications p{
+
+margin:0;
+}
+
+.carousel-prev{left:10px}
+.carousel-next{right:10px}
+
+/* GALERIE */
+.gallery-section{
+    background-color: var(--gallery);
+}
+.gallery{
+    max-width: 900px;
+    margin: auto;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+}
+.gallery-item{
+display:flex;
+align-items:center;
+padding:0px;
+border-radius:14px; 
+transition:.3s;
+}
+.img-wrapper{
+    width:60px;
+    overflow:hidden;
+    margin-right:10px;
+}
+.img-wrapper img{width:100%;height:100%;object-fit:cover}
+.text-wrapper{flex:1}
+.text-wrapper p{
+    padding:0px;
+    margin: 0px 0px 30px 0px;
+}
+
+/* CAREER */
+.career-container{
+display:flex;
+flex-direction:row;
+gap:40px;
+align-items:center;
+}
+.skills-section{
+     background-color: var(--bege);
+}
+.skills-ul{
+    padding: 0px 0px 0px 10px;
+     list-style: none;
+}
+
+
+.skills-ul li::before {
+  content: "- ";
+}
+.career-content{
+    border-radius: 2px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    background-color: var(--telegram-fc);
+    
+}
+
+.career{
+    background-color: var(--bege);
+    color: var(--custom-black);
+}
+.career-text{
+    flex:3
+}
+.career-image{
+    flex:2;
+    border-radius: 20px;
+}
+.career-image a{
+    color: white;   
+}
+
+/* CERTIFICATIONS - carousel */
+.carousel {
+    max-width: 800px;
+    margin: 0px auto;
+    padding: 40px 0 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.6s ease;
+}
+.carousel-slide {
+    min-width: 100%;
+    text-align: center;
+    padding: 20px 40px;
+    
+}
+
+.carousel-slide img {
+    max-width: 180px;
+    max-height: 90px;
+    object-fit: contain;
+}
+.carousel-slide h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.carousel-slide p {
+    margin: 10px;
+    font-size: 16px;
+    color: #666;
+    text-align: left;
+}
+
+/* RÃ¨gle unique fusionnÃ©e (auparavant dupliquÃ©e) */
+.carousel-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background: #555555;
+    color: #fff;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 22px;
+    padding: 8px;
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+.carousel-btn:hover {
+    opacity: 1;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+.carousel-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+.carousel-dots span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.carousel-dots .active {
+    background: var(--link);
+}
+.credly-img{
+    width: 120px;
+    float: right;
+}
+
+.tfc-text{
+    flex:1; text-align: center;
+    padding: 60px 0px 60px 0px;
+}
+.tfc-text img{ width: 80px;}
+.tfc-image{
+    flex:1; 
+    padding: 30px;
+    background-color: white;
+}
+.career-image img{
+    width:100%;
+    border-radius:20px
+}
+
+/* FOOTER - reste en bas de page meme si le contenu est court.
+   margin-top:auto pousse le footer en bas quel que soit le contenu
+   place entre la navbar et le footer (pas besoin que ce soit une <section>) */
+footer{
+background:#000;
+color:#777;
+padding:20px;
+font-size:14px;
+text-align: center;
+flex-shrink:0;
+margin-top:auto;
+}
+
+/* ANIM */
+.reveal{opacity:0;transform:translateY(25px);}
+.reveal.show{opacity:1;transform:none;transition:.8s}
+
+
+/*My CSS*/
+.nb-logo-text{
+    font-size: 18px;
+    color: white;
+}
+.center{
+    text-align: center;
+}
+.t-left{
+    text-align: left;
+}
+.ligne {
+            border-top: 1px solid var(--muted);
+            margin: 10px 0px 5px 0px;
+        }
+.about-me{
+    /* background-color: white; */
+    padding: 20px;
+    border-radius: 20px;
+}
+.about-me-link {
+    color: var(--custom-black);
+    font-weight: bold;
+    transition: all 0.3s;
+        }
+/* .about-me-link:hover {
+        background-color: #000;
+        color: #fff;
+    } */
+.telegram-btn {
+        display: block;
+        width: 250px;
+        text-align: center;
+        padding: 10px 0;
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        transition: all 0.3s;
+        background-color: var(--telegram-btn);
+    }
+.telegram-btn:hover {
+        background-color: #000;
+        color: #fff;
+    }
+.career-contact img{
+    width: 35px;
+}
+.career-contact{
+    text-decoration: none;
+    list-style: none;
+}
+.social-media-li {
+   margin-top: 10px;
+}
+.social-media-icon a{
+    margin-right: 20px;
+}
+.career-section{
+    background-color: var(--gallery);
+}
+
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.section-title {
+    font-size: 20px; 
+    font-weight: normal;
+}
+.about-me-btn {
+        font-size: 14px;
+        width: 200px;
+    }
+.hamburger{display:flex;}
+
+nav .menu{
+display:none;
+flex-direction:column;
+width:100%;
+}
+
+.skills{grid-template-columns:1fr}
+.career-container{flex-direction:column; }
+.container{padding: 0px 10px 0px 10px;}
+.career-image{margin-top:20px}
+.img-wrapper{
+    width:70px;
+    margin-right:15px;margin-bottom:0
+}
+.gallery-item{flex-direction:row;text-align:left}
+.hero{
+    min-height:auto;
+    padding:140px 20px
+}
+.hero-title{
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    background-color: #006f99;
+}
+.certifications div{flex-direction:column;text-align:center;
+}
+
+.tfc-text{
+    width: 100%;
+}
+.career-shadow{
+    border-radius: 0px; box-shadow: 0 5px 15px rgba(0,0,0,0.0);
+}
+.small-container{
+    padding: 0px;
+}
+
+.carousel-slide p {
+    margin: 0px;
+    padding: 0px;
+}
+.carousel-btn{
+display: none;
+}
+.carousel-slide {
+    padding: 10px;
+}
+
+.career-section{
+    background-color: #1c47e3;
+    padding: 0px;
+}
+.tfc-image{
+    width: 100%;
+    flex:1; 
+    padding: 20px;
+}
+.career-content{
+    border-radius: 2px; box-shadow: 0 0px 0px rgba(0,0,0,0.2);
+    background-color: var(--telegram-fc);
+}
+.tfc-text{
+    padding: 60px 0px 0px 0px;
+}
+}
