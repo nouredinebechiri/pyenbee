@@ -1,5 +1,22 @@
 from django.shortcuts import render, redirect
-from .models import Car
+from .models import Car, Account
+from .forms import RegisterForm
+
+
+def register(request):
+    if request.method == 'POST':
+        username_in = request.POST.get('username_f')
+        password_in = request.POST.get('password_f')
+        user = Account(username=username_in, password=password_in)
+        user.save()
+        print(f"------------- user {user} created")
+        return redirect ('user_list')
+    else:
+        return render(request, 'mytests/register.html', {'register_form': RegisterForm})
+
+def user_list(request):
+    users = Account.objects.all()
+    return render(request, 'mytests/user_list.html', {'users': users})
 
 def car_list(request):
     id_del = request.GET.get('pk') 

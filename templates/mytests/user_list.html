@@ -1,0 +1,10 @@
+{% extends "mytests/base.html" %}
+{% block content %}
+    <ol>
+        {% for user in users %}
+            <li>Username: {{user.username}} - Password: {{user.password}}</li>
+        {% endfor %}
+    </ol>
+{% endblock content %}
+
+
