@@ -539,7 +539,7 @@ width:100%;
 .gallery-item{flex-direction:row;text-align:left}
 .hero{
     min-height:auto;
-    padding:140px 20px
+    padding:40px 20px
 }
 .hero-title{
     width: 100%;
