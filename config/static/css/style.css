@@ -30,11 +30,68 @@ body{
     flex-direction: column;
     min-height: 100vh;
 }
+a{
+    color: var(--custom-black);
+}
+a:hover{
+    text-decoration: underline;
+}
 .nb-logo{
     height: 40px;
 }
-a{text-decoration: none;color:var(--link);font-weight: bold;text-decoration: underline;}
-a:hover{text-decoration: underline;}
+.hero a{
+    text-decoration: none;
+    color:white;
+    /* font-weight: bold; */
+    text-decoration: underline;
+}
+.hero i{
+    color:white;
+}
+.footer-texte {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+.footer-texte p {
+  margin: 80px;
+}
+.footer-texte a {
+  color: white;
+  text-decoration: none;
+  font-style: normal;
+}
+/* Sur mobile */
+@media (max-width: 600px) {
+    .footer-texte {
+        margin-top: 40px;
+        font-size: 14px;
+}
+    .footer-texte p {
+    margin: 0px;
+}
+  .footer-texte {
+    flex-wrap: wrap;
+  }
+
+  .footer-texte p:nth-child(1) {
+    order: 1;
+  }
+
+  .footer-texte p:nth-child(3) {
+    order: 2;
+  }
+
+  .footer-texte p:nth-child(2) {
+    order: 3;
+    width: 100%;       /* force le passage à la ligne suivante */
+    text-align: center;
+    margin-top: 40px;
+  }
+}
+
 section{
     padding:80px 10px;
     flex: 1;
@@ -153,12 +210,14 @@ margin-bottom:20px
     list-style: none;
     padding: 0;
     margin: 20px 0px 20px 0px;
+
 }
 
 .icon-list li {
     display: flex;
     align-items: center;
     font-size: 18px;
+    color: var(--custom-black);
 }
 
 .icon-list i {
@@ -166,20 +225,9 @@ margin-bottom:20px
     font-size: 22px;
 }
 
-.linkedin i {
-    color: white;
-}
 
-.email i {
-    color: white;
-}
-
-.telegram i {
-    color: white;
-}
 .icon-list a {
     text-decoration: none;
-    color: white;
 }
 .icon-list a:hover{
     text-decoration: underline;
@@ -331,7 +379,7 @@ align-items:center;
     border-radius: 20px;
 }
 .career-image a{
-    color: white;   
+    color: var(--custom-black)   
 }
 
 /* CERTIFICATIONS - carousel */
