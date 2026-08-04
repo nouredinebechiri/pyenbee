@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.views.generic import TemplateView
 
 def index(request):
     context = {
@@ -29,5 +29,9 @@ def index(request):
     }
     return render(request, 'pages/index.html', context)
 
-def about(request):
-    return render(request, 'pages/about.html')
+
+class About(TemplateView):
+    template_name = 'pages/about.html'
+    
+# def about(request):
+#     return render(request, 'pages/about.html')

@@ -1,0 +1,6 @@
+
+<ul>
+    {% for user in users  %}
+        <li>{{user.first_name|capfirst}} {{user.last_name|upper}}</li>
+    {% endfor %}
+</ul>
