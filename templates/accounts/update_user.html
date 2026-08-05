@@ -1,8 +1,7 @@
 <h1>update user</h1>
 
-
-<form action="" method="post">
+<form action="" method="action">
     {% csrf_token %}
-    {{user_form.as_p}}
-    <input type="submit" value="update">
+    {{form}}
+    <input type="submit" name="update" id="">
 </form>
