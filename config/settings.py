@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['enbee.pythonanywhere.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'catalog.apps.CatalogConfig',
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
