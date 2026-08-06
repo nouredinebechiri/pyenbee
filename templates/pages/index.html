@@ -115,14 +115,14 @@
                 <div class="carousel-slide" style="visibility: visible;">
                     <img src="/static/images/vcp-dcv.png" alt="Logo">
                     <h3>
-                        <a href="https://cp.certmetrics.com/vmware/en/public/verify/credential/5fbd473a41144071a71f249fd17191d5" target="_blank">
+                        <a href="{{certification.cert_url}}" target="_blank">
                             <span data-lang="fr">{{certification.title_fr}}</span>
                             <span data-lang="en" style="display:none">{{certification.title_en}}</span>
                         </a>
                     </h3>
                     <p data-lang="fr">{{certification.desc_fr}}</p>
                     <p data-lang="en" style="display:none">{{certification.desc_en}}</p>
-                    <p><span data-lang="fr">Livrée par </span> <span data-lang="en" style="display:none">Issued by </span><a href="https://www.vmware.com/" target="_blank">{{certification.organization}}</a>, <span data-lang="fr">Organisation</span> <span data-lang="en" style="display:none">Organization</span></p>
+                    <p><span data-lang="fr">Livrée par </span> <span data-lang="en" style="display:none">Issued by </span><a href="{{certification.or}}" target="_blank">{{certification.organization}}</a>, <span data-lang="fr">Organisation</span> <span data-lang="en" style="display:none">Organization</span></p>
                     
                 </div>
             {% endfor %}

@@ -20,11 +20,51 @@ def index(request):
             {'icon': "images/sharepoint.png", 'title': "Microsoft SharePoint", 'desc_fr': "Une plateforme collaborative conçue pour centraliser l'information, fluidifier la communication interne et faciliter le travail en équipe.",'desc_en': "A collaborative platform designed to centralize information, streamline internal communication, and facilitate teamwork.",'link':"#", 'tags_fr':"Service collaboratif", 'tags_en':"Collaborative service"},
         ],
         'certifications': [ 
-            {'icon': "images/vcp-dcv.png", 'title_fr': "VMware Certified Professional - Data Center Virtualization", 'title_en': "VMware Certified Professional - Data Center Virtualization", 'desc_fr': "Cette certification valide que je peux mettre en œuvre, gérer et dépanner une infrastructure vSphere, en utilisant les meilleures pratiques pour fournir une base puissante, flexible et sécurisée pour l'agilité commerciale qui peut accélérer la transformation vers le cloud computing.", 'desc_en': "This certification validates my ability to implement, manage, and troubleshoot a vSphere infrastructure, using best practices to provide a powerful, flexible, and secure foundation for business agility that can accelerate the transformation to cloud computing.", 'cert_url':"https://cp.certmetrics.com/vmware/en/public/verify/credential/5fbd473a41144071a71f249fd17191d5", 'organization':"VMware",},
-            {'icon': "images/vsan-specialist.png", 'title_fr': "VMware Certified Specialist - vSAN", 'title_en': "VMware Certified Specialist - vSAN", 'desc_fr': "Cette certification confirme mon expertise technique sur VMware vSAN. Elle valide ma capacité à comprendre son architecture et ses fonctionnalités, à concevoir et déployer une infrastructure vSAN. ainsi qu’à administrer et exploiter efficacement un cluster vSAN.", 'desc_en': "This certification confirms my technical expertise on VMware vSAN. It validates my ability to understand its vSAN architecture and its functionalities, to design and deploy a vSAN infrastructure, as well as to effectively administer and operate a vSAN cluster.", 'cert_url':"https://www.credly.com/badges/31e784ea-5f05-406a-85a2-59984374593e", 'organization':"VMware"},
-            {'icon': "images/vcp-nv.jpeg", 'title_fr': "VMware Certified Professional - Network Virtualization", 'title_en': "VMware Certified Professional - Network Virtualization", 'desc_fr': "Cette certification atteste de ma capacité à optimiser et transformer les opérations réseau et la sécurité informatique au sein de l’entreprise. Elle reconnaît mes compétences dans le déploiement, la configuration et la gestion de solutions de virtualisation réseau basées sur VMware NSX.", 'desc_en': "This certification validates my ability to optimize and transform network operations and IT security within the enterprise. It recognizes my expertise in deploying, configuring, and managing network virtualization solutions based on VMware NSX.", 'cert_url':"https://cp.certmetrics.com/vmware/en/public/verify/credential/f8588ad4c9c148b7bf992e5cd71a3dc7", 'organization':"VMware",},
-            {'icon': "images/ummto.png", 'title_fr': "Master en Réseaux, Mobilités et Systèmes Embarqués", 'title_en': "Master’s Degree in Networks, Mobility, and Embedded Systems", 'desc_fr': "J'ai acquis une solide expérience théorique et pratique à travers différents modules tels que l'architecture des systèmes embarqués, la programmation parallèle, les réseaux et leur sécurité, le développement mobile, la virtualisation, et bien plus encore.", 'desc_en': "I gained solid theoretical and practical experience through various modules such as embedded systems architecture, parallel programming, networking and security, mobile development, virtualization, and much more.", 'link':"#", 'organization':"UMMTO",},
-            {'icon': "images/ummto.png", 'title_fr': "Licence en Informatique", 'title_en': "Bachelor’s Degree in Computer Science", 'desc_fr': "J'ai appris à coder, à gérer des bases de données et à comprendre les réseaux, la sécurité informatique et les systèmes. Cette formation m'a donné de solides bases dans plusieurs domaines de l'informatique et m'a aidé à m'adapter aux nouvelles technologies.", 'desc_en': "I learned how to code, manage databases, and understand networks, cybersecurity, and systems. This training provided me with a strong foundation in several areas of IT and helped me adapt to new technologies.", 'link':"#", 'organization':"UMMTO",}
+            {
+                'icon': "images/vcp-dcv.png", 
+                'title_fr': "VMware Certified Professional - Data Center Virtualization", 
+                'title_en': "VMware Certified Professional - Data Center Virtualization", 
+                'desc_fr': "Cette certification valide que je peux mettre en œuvre, gérer et dépanner une infrastructure vSphere, en utilisant les meilleures pratiques pour fournir une base puissante, flexible et sécurisée pour l'agilité commerciale qui peut accélérer la transformation vers le cloud computing.", 
+                'desc_en': "This certification validates my ability to implement, manage, and troubleshoot a vSphere infrastructure, using best practices to provide a powerful, flexible, and secure foundation for business agility that can accelerate the transformation to cloud computing.", 
+                'cert_url':"https://cp.certmetrics.com/vmware/en/public/verify/credential/5fbd473a41144071a71f249fd17191d5", 
+                'organization':"VMware",
+                'org_url': 'https://vmware.com'
+             },
+            {
+                'icon': "images/vsan-specialist.png", 
+                'title_fr': "VMware Certified Specialist - vSAN", 
+                'title_en': "VMware Certified Specialist - vSAN", 
+                'desc_fr': "Cette certification confirme mon expertise technique sur VMware vSAN. Elle valide ma capacité à comprendre son architecture et ses fonctionnalités, à concevoir et déployer une infrastructure vSAN. ainsi qu’à administrer et exploiter efficacement un cluster vSAN.", 
+                'desc_en': "This certification confirms my technical expertise on VMware vSAN. It validates my ability to understand its vSAN architecture and its functionalities, to design and deploy a vSAN infrastructure, as well as to effectively administer and operate a vSAN cluster.", 
+                'cert_url':"https://www.credly.com/badges/31e784ea-5f05-406a-85a2-59984374593e", 
+                'organization':"VMware",
+                'org_url': 'https://vmware.com'
+             },
+            {
+                'icon': "images/vcp-nv.jpeg", 
+                'title_fr': "VMware Certified Professional - Network Virtualization", 
+                'title_en': "VMware Certified Professional - Network Virtualization", 
+                'desc_fr': "Cette certification atteste de ma capacité à optimiser et transformer les opérations réseau et la sécurité informatique au sein de l’entreprise. Elle reconnaît mes compétences dans le déploiement, la configuration et la gestion de solutions de virtualisation réseau basées sur VMware NSX.", 
+                'desc_en': "This certification validates my ability to optimize and transform network operations and IT security within the enterprise. It recognizes my expertise in deploying, configuring, and managing network virtualization solutions based on VMware NSX.", 
+                'cert_url':"https://cp.certmetrics.com/vmware/en/public/verify/credential/f8588ad4c9c148b7bf992e5cd71a3dc7", 
+                'organization':"VMware",
+                'org_url': 'https://vmware.com'
+                },
+            {
+                'icon': "images/ummto.png", 
+                'title_fr': "Master en Réseaux, Mobilités et Systèmes Embarqués", 
+                'title_en': "Master’s Degree in Networks, Mobility, and Embedded Systems", 
+                'desc_fr': "J'ai acquis une solide expérience théorique et pratique à travers différents modules tels que l'architecture des systèmes embarqués, la programmation parallèle, les réseaux et leur sécurité, le développement mobile, la virtualisation, et bien plus encore.", 
+                'desc_en': "I gained solid theoretical and practical experience through various modules such as embedded systems architecture, parallel programming, networking and security, mobile development, virtualization, and much more.", 
+                'org_url':"https://ummto.dz", 'organization':"UMMTO",},
+            {
+                'icon': "images/ummto.png", 
+                'title_fr': "Licence en Informatique", 
+                'title_en': "Bachelor’s Degree in Computer Science", 
+                'desc_fr': "J'ai appris à coder, à gérer des bases de données et à comprendre les réseaux, la sécurité informatique et les systèmes. Cette formation m'a donné de solides bases dans plusieurs domaines de l'informatique et m'a aidé à m'adapter aux nouvelles technologies.", 
+                'desc_en': "I learned how to code, manage databases, and understand networks, cybersecurity, and systems. This training provided me with a strong foundation in several areas of IT and helped me adapt to new technologies.", 
+                'org_url':"https://ummto.dz", 
+                'organization':"UMMTO",}
         ]
     }
     return render(request, 'pages/index.html', context)
