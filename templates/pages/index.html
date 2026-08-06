@@ -4,41 +4,30 @@
 {% block content %}
 <header id="hero" class="hero center">
     <div class="container">  
-        <img src="{% static "images/profile.jpg" %}" alt="Nouredine Bechiri">      
+        <img class="img-profile" src="{% static "images/profile.jpg" %}" alt="Nouredine Bechiri">      
         <p class="section-title" data-lang="fr"><span>Besoin d'aide ?</span> Digitalisation, Cybersécurité, Conseils</p>
         <p class="section-title" data-lang="en" style="display:none"><span>Need help?</span> Digitalization, Cybersecurity, Consulting</p>
-        <p data-lang="fr">
-            Vous souhaitez optimiser la performances et la sécurité de vos systèmes informatiques ?<br>
-            N'hésitez pas à me contacter pour vous accompagner dans cette démarche.
-        </p>
-        <p data-lang="en" style="display:none">Do you want to improve the performance and security of your IT systems ? <br>
-            Feel free to contact me for guidance and support in this process.
-        </p>
+        <p data-lang="fr">Vous souhaitez optimiser la performances et la sécurité de vos systèmes informatiques ?<br>N'hésitez pas à me contacter pour vous accompagner dans cette démarche.</p>
+        <p data-lang="en" style="display:none">Do you want to improve the performance and security of your IT systems ? <br>Feel free to contact me for guidance and support in this process.</p>
         <ul class="icon-list">
-            <li class="linkedin">
-                <i class="fab fa-linkedin"></i>
-                <a href="https://www.linkedin.com/in/nouredinebechiri/" target="_blank">LinkedIn</a>
-            </li>
-            <li class="email">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:nouredine.bechiri@gmail.com">Email</a>
-            </li>
-            <li class="telegram">
-                <i class="fab fa-whatsapp"></i>
-                <a href="https://wa.me/qr/CGO7UGQV2W7NE1" target="_blank">WhatsApp</a>
-            </li>
+            <li class="linkedin"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/nouredinebechiri/" target="_blank">LinkedIn</a></li>
+            <li class="email"><i class="fas fa-envelope"></i><a href="mailto:nouredine.bechiri@gmail.com">Email</a></li>
+            <li class="telegram"><i class="fab fa-whatsapp"></i><a href="https://wa.me/qr/CGO7UGQV2W7NE1" target="_blank">WhatsApp</a> </li>
         </ul>
     </div>
     <div class="footer-texte">
-
         <p>Nouredine Bechiri <br> IT Solution Architect</p>
-        <p><a href="https://www.credly.com/users/nouredinebechiri" target="_blank"><span data-lang="fr"> Certifié VMware</span><span data-lang="en" style="display:none">VMware Certified</span> <br> VCP-DCV, VCP-NV, Specialist vSAN</a></p>
-        <p data-lang="fr">+12 <br> Années d'experiences</p>
+        <p>
+            <img style="width: 150px;" src="{% static "images/vmware-logo-grey.png" %}" alt=""> <br>
+            <a href="https://www.credly.com/users/nouredinebechiri" target="_blank"><span data-lang="fr">VCP-DCV, VCP-NV, Specialist-vSAN</span><span data-lang="en" style="display:none">VCP-DCV, VCP-NV, Specialist-vSAN</span> </a></p>
+            <p data-lang="fr">+12 <br> Années d'experiences</p>
         <p data-lang="en" style="display:none">12+ <br> Years of Experience</p>
     </div>
 </header>
 
-    <span class="lang-toggle" id="lang-toggle"></span>
+<span class="lang-toggle" id="lang-toggle"></span>
+
+
 <section id="skills" class="skills-section">
     <div class="container reveal">       
         <h2 class="section-title" data-lang="fr"><span>Compétences</span> dans trois domaines clés</h2>
@@ -105,7 +94,7 @@
 </section>
 
 <!-- Certifications Slider-->
-<section id="certifications" class="certifications-section">
+<section id="carousel" class="certifications-section">
     <div class="container carousel">
         <h2 data-lang="fr" class="center">MES CERTIFICATIONS</h2>
         <h2 data-lang="en" style="display:none" class="center">MY CERTIFICATIONS</h2>
