@@ -597,6 +597,10 @@ width:100%;
 }
 .certifications div{flex-direction:column;text-align:center;
 }
+.icon-list li {
+    font-size: 14px;
+    
+}
 
 .tfc-text{
     width: 100%;

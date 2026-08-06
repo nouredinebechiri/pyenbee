@@ -26,19 +26,19 @@
             <li class="telegram">
                 <i class="fab fa-whatsapp"></i>
                 <a href="https://wa.me/qr/CGO7UGQV2W7NE1" target="_blank">WhatsApp</a>
-                <!-- <a href="https://t.me/nouredinebechiri" target="_blank">Telegram</a> -->
             </li>
         </ul>
     </div>
     <div class="footer-texte">
 
         <p>Nouredine Bechiri <br> IT Solution Architect</p>
-        <p><a href="https://www.credly.com/users/nouredinebechiri" target="_blank">Certifié VMware <br> VCP-DCV, VCP-NV, Specialist vSAN</a></p>
-        <p>+12 <br> Années d'experiences</p>
+        <p><a href="https://www.credly.com/users/nouredinebechiri" target="_blank"><span data-lang="fr"> Certifié VMware</span><span data-lang="en" style="display:none">VMware Certified</span> <br> VCP-DCV, VCP-NV, Specialist vSAN</a></p>
+        <p data-lang="fr">+12 <br> Années d'experiences</p>
+        <p data-lang="en" style="display:none">12+ <br> Years of Experience</p>
     </div>
 </header>
 
-<!-- <span class="lang-toggle" id="lang-toggle"></span> -->
+    <span class="lang-toggle" id="lang-toggle"></span>
 <section id="skills" class="skills-section">
     <div class="container reveal">       
         <h2 class="section-title" data-lang="fr"><span>Compétences</span> dans trois domaines clés</h2>
@@ -105,8 +105,8 @@
 </section>
 
 <!-- Certifications Slider-->
-<section class="certifications-section">
-    <div class="container carousel" id="carousel">
+<section id="certifications" class="certifications-section">
+    <div class="container carousel">
         <h2 data-lang="fr" class="center">MES CERTIFICATIONS</h2>
         <h2 data-lang="en" style="display:none" class="center">MY CERTIFICATIONS</h2>
         <div class="carousel-track" id="track">
@@ -123,7 +123,6 @@
                     <p data-lang="fr">{{certification.desc_fr}}</p>
                     <p data-lang="en" style="display:none">{{certification.desc_en}}</p>
                     <p><span data-lang="fr">Livrée par </span> <span data-lang="en" style="display:none">Issued by </span><a href="{{certification.or}}" target="_blank">{{certification.organization}}</a>, <span data-lang="fr">Organisation</span> <span data-lang="en" style="display:none">Organization</span></p>
-                    
                 </div>
             {% endfor %}
 
@@ -171,14 +170,24 @@
                 <div class="timeline-item">
                     <p class="t-left" data-lang="fr">À propos</p>
                     <p class="t-left" data-lang="en" style="display:none">About</p>
+
                     <h2 class="section-title t-left" data-lang="fr"><b>Qui suis-je ?</b></h2>
                     <h2 class="section-title t-left" data-lang="en" style="display:none"><b>Who Am I?</b></h2>
-                    <p>Je suis ingénieur en informatique, spécialisé dans la conception et l’architecture des systèmes et réseaux. Titulaire d'un Master en Informatique de l'UMMTO <p>
-                    <p>Je mets en œuvre des solutions techniques sur mesure, adaptées aux besoins des entreprises: +12 ans en entreprise en tant qu'Ingénieur Systèmes et Réseaux - Echorouk TV, SNTF.</p>
-                    <p>Au fil de ces années, j'ai conçu et déployé plusieurs projets répondant aux besoins de mes employeurs, couvrant l'infrastructure virtuelle, l'architecture réseaux et la cybersécurité.</p>
-                    <p>Je suis également développeur web avec Python et Django</p>
+
+                    <p class="t-left" data-lang="fr">Je suis ingénieur en informatique, spécialisé dans la conception et l’architecture des systèmes et réseaux. Titulaire d'un Master en Informatique de l'UMMTO <p>
+                    <p class="t-left" data-lang="en" style="display:none">I am a Computer Engineer specializing in systems and network design and architecture. I hold a Master's degree in Computer Science from Mouloud Mammeri University of Tizi Ouzou (UMMTO).</p>
+
+                    <p class="t-left" data-lang="fr">Je mets en œuvre des solutions techniques sur mesure, adaptées aux besoins des entreprises: +12 ans en entreprise en tant qu'Ingénieur Systèmes et Réseaux - <a href="https://www.echoroukonline.com" target="_blank">Groupe Echorouk</a>, <a href="https://www.sntf.dz" target="_blank">SNTF</a>.</p>
+                    <p class="t-left" data-lang="en" style="display:none">I design and implement tailored technical solutions that meet business needs. With over 12 years of professional experience as a Systems and Network Engineer, I have worked for organizations such as <a href="https://www.echoroukonline.com" target="_blank" >Echorouk Group</a> and <a href="https://www.sntf.dz" target="_blank">SNTF</a>, delivering robust, secure, and scalable IT infrastructures.</p>
+                    
+                    <p class="t-left" data-lang="fr">Au fil de ces années, j'ai conçu et déployé plusieurs projets répondant aux besoins de mes employeurs, couvrant l'infrastructure virtuelle, l'architecture réseaux et la cybersécurité.</p>
+                    <p class="t-left" data-lang="en" style="display:none">Over the years, I have designed and deployed numerous projects tailored to my employers' business needs, covering virtual infrastructure, network architecture, and cybersecurity.</p>
+                    
+                    <p class="t-left" data-lang="fr">Je suis également développeur web avec Python et Django</p>
+                    <p class="t-left" data-lang="en" style="display:none">I am also a Web Developer, specializing in Python and Django.</p>
                 </div>
-                <a href="{% url "about" %}">Mon parcours en détail </a>
+                <a class="t-left" data-lang="fr" href="{% url "about" %}">Mon parcours en détail </a>
+                <a class="t-left" data-lang="en" style="display:none" href="">My Professional Journey</a>
             </div>
             <div class="career-image reveal">
                 <img src="{% static 'images/profile2.jpg' %}" alt="Parcours Image">

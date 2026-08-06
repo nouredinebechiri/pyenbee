@@ -1,24 +1,12 @@
 {% load static %}
 <nav id="nav">
     <div class="nav-inner">
-        <div>
-            <span><a href="{% url "index" %}"><img class="nb-logo" src="{% static "images/nb-header.png" %}" alt=""></a></span>
-        </div>
-        
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        
+        <div><span><a href="{% url "index" %}"><img class="nb-logo" src="{% static "images/nb-header.png" %}" alt=""></a></span></div>
+        <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
         <div class="menu">        
-            <a href="{% url "index" %}#skills" data-lang="fr">Compétences</a>
-            <a href="{% url "index" %}#carousel" data-lang="fr">Certifications</a>
-            <a href="{% url "about" %}" data-lang="fr">À propos </a>
-            
-            <a href="{% url "index" %}#skills" data-lang="en" style="display:none">Skills</a>
-            <a href="{% url "index" %}#carousel" data-lang="en" style="display:none">Certifications</a>
-            <a href="{% url "about" %}" data-lang="en" style="display:none">About</a>
+            <a href="{% url 'index' %}#skills"><span data-lang="fr">Compétences</span><span data-lang="en" style="display:none">Skills</span></a>
+            <a href="{% url 'index' %}#certifications"><span data-lang="fr">Certifications</span><span data-lang="en" style="display:none">Certifications</span></a>
+            <a href="{% url 'about' %}" ><span data-lang="fr">À propos</span><span data-lang="en" style="display:none">About</span></a>
         </div>
     </div>
 </nav>
