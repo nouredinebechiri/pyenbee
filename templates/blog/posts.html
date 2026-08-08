@@ -1,0 +1,87 @@
+{% extends 'blog/base.html' %}
+{% block title %} Articles{% endblock title %}
+
+{% block content %}
+<main>
+
+<section class="page-header">
+    <div class="container">
+        <span class="label">BLOG</span>
+        <h1>Tous les articles</h1>
+        <p>Retrouvez nos articles sur la programmation, Linux, le web et la cybersécurité.</p>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container">
+        <div class="search">
+            🔍
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Rechercher un article...">
+        </div>
+        <div class="cards" id="articleList">
+            <article class="card searchable" data-search="html css javascript programmation web">
+                <div class="card-image blue">
+                    &lt;/&gt;
+                </div>
+                <div class="card-content">
+                    <span class="category">PROGRAMMATION</span>
+                    <h3>Apprendre HTML, CSS et JavaScript</h3>
+                    <p>Découvrez les bases du développement web moderne.</p>
+                    <a href="articles/html-css-js.html" class="read"> Lire l'article →</a>
+                </div>
+            </article>
+
+            <article class="card searchable" data-search="linux terminal commandes ubuntu">
+                <div class="card-image purple">
+                    🐧
+                </div>
+                <div class="card-content">
+                    <span class="category">LINUX</span>
+                    <h3>10 commandes Linux indispensables</h3>
+                    <p>Les commandes essentielles pour débuter avec Linux.</p>
+
+                    <a href="{% url 'linux' %}" class="read">Lire l'article →</a>
+                </div>
+            </article>
+
+            <article class="card searchable" data-search="cyber sécurité securite compte mot passe">
+                <div class="card-image green">
+                    🔐
+                </div>
+                <div class="card-content">
+                    <span class="category">CYBERSÉCURITÉ</span>
+                    <h3>Comment sécuriser ses comptes ?</h3>
+                    <p>Découvrez les bonnes pratiques de sécurité.</p>
+                    <a href="#" class="read">Lire l'article →</a>
+                </div>
+            </article>
+
+
+            <article class="card searchable" data-search="git github programmation version">
+                <div class="card-image red">
+                    ⚙️
+                </div>
+                <div class="card-content">
+                    <span class="category">PROGRAMMATION</span>
+                    <h3>Git et GitHub pour débutants</h3>
+                    <p>Apprenez à gérer vos projets avec Git.</p>
+                    <a href="articles/git-github.html"class="read">Lire l'article →</a>
+                </div>
+            </article>
+        </div>
+
+        <div id="noResults" class="no-results">
+            Aucun article trouvé.
+        </div>
+    </div>
+</section>
+
+</main>
+{% endblock content %}
+
+
+

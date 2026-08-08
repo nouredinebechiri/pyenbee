@@ -1,0 +1,16 @@
+<header class="header">
+    <div class="container navbar">
+        <a href="{% url 'index_blog' %}" class="logo">enbee <span>Blog</span></a>
+        <nav id="nav">
+            <a class="active" href="{% url 'index_blog' %}">Accueil</a>
+            <a href="{% url 'posts_blog' %}">Articles</a>
+            <a href="{% url 'tutorials_blog' %}">Tutoriels</a>
+            <a href="{% url 'categories_blog' %}">Catégories</a>
+            <a href="{% url 'about_blog' %}">À propos</a>
+        </nav>
+        <div class="header-actions">
+            <button id="themeBtn" class="icon-btn">🌙</button>
+            <button id="menuBtn" class="icon-btn menu-btn">☰</button>
+        </div>
+    </div>
+</header>

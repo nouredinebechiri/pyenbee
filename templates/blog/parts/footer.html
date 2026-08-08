@@ -1,0 +1,32 @@
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <a href="index.html" class="logo">
+                enbee<span>IT</span>
+            </a>
+            <p>
+                Un blog simple consacré à la technologie,
+                au développement et à l'informatique.
+            </p>
+        </div>
+        <div>
+            <h4>Navigation</h4>
+            <a href="{% url 'index_blog' %}">Accueil</a>
+            <a href="{% url 'posts_blog' %}">Articles</a>
+            <a href="tutoriels.html">Tutoriels</a>
+        </div>
+        <div>
+            <h4>Catégories</h4>
+            <a href="#">Programmation</a>
+            <a href="#">Linux</a>
+            <a href="#">Cybersécurité</a>
+        </div>
+        <div>
+            <h4>Informations</h4>
+            <a href="{% url 'about_blog' %}">À propos</a>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2026 Nouredine Bechiri - Tous droits réservés.
+    </div>
+</footer>

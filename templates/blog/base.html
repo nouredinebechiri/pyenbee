@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechBlog - Actualités IT et tutoriels informatiques">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href=" {% static 'css/blog-style.css' %} ">
+</head>
+
+<body>
+{% include 'blog/parts/navbar.html' %}
+
+{% block content %}
+
+{% endblock content %}
+
+{% include 'blog/parts/footer.html' %}
+<script src="{% static 'js/blog-script.js' %}"></script>
+
+</body>
+</html>
