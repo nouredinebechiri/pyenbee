@@ -1,117 +1,213 @@
-{% extends 'blog/base.html' %}
-{% load static %}
-
-{% block title %}enbeeBlog — Accueil{% endblock title %}
+{% extends "blog_base.html" %}
 
 {% block content %}
 
-<main>
-
-<section class="hero">
-    <div class="container hero-grid">
-        <div>
-            <span class="label"> BLOG TECHNOLOGIQUE</span>
-            <h1>La technologie, <span>simplement.</span></h1>
-            <p>Actualités IT, programmation, Linux,cybersécurité et tutoriels pratiques pour apprendre facilement.</p>
-            <div class="hero-buttons">
-                <a href="{% url 'blog:posts' %}" class="btn btn-primary">Voir les articles</a>
-                <a href="{% url 'blog:tutorials' %}" class="btn btn-secondary">Tutoriels</a>
-            </div>
-        </div>
-
-        <div class="terminal">
-            <div class="terminal-top">
-                <i></i>
-                <i></i>
-                <i></i>
-            </div>
-            <div class="terminal-body">
-                <p><span>$</span> welcome EnbeeBlog</p>
-                <p class="blue">Apprendre · Créer · Partager</p>
-                <p><span>$</span> ls</p>
-                <p class="white">
-                    Python<br>css<br>javascript<br>linux<br>cybersecurity
-                </p>
-            </div>
-        </div>
+<!-- TOPLINE -->
+  <div class="topline">
+    <div class="wrap">
+      <div class="status"><span class="dot-live"></span> système à jour — dernière publication il y a 2h</div>
+      <div class="social">
+        <a href="#" aria-label="RSS">RSS</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="GitHub">gh</a>
+        <a href="#" aria-label="Discord">disc</a>
+      </div>
     </div>
-</section>
+  </div>
 
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="prompt-line">
+        <span class="user">nb@syslog</span>:<span class="path">~/derniers_articles</span>$ tail -f articles.log <span class="cursor"></span>
+      </div>
 
-<section class="section">
-    <div class="container">
-        <div class="section-title">
-            <div>
-                <span class="label">BLOG</span>
-                <h2>Derniers articles</h2>
+      <div class="hero-grid">
+        <article class="term-card">
+          <div class="term-titlebar">
+            <div class="term-dots"><span></span><span></span><span></span></div>
+            <span class="term-path">~/securite/waf-guide-debutant.md</span>
+          </div>
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80" alt="Pare-feu applicatif web"></div>
+          <div class="term-body">
+            <span class="tag red">Cybersécurité</span>
+            <h3><a href="article.html">Qu'est-ce qu'un WAF ? Principes et mise en pratique avec ModSecurity</a></h3>
+            <p class="excerpt">Rôle d'un pare-feu applicatif face aux attaques web, panorama des solutions open source, et déploiement pas à pas.</p>
+            <div class="meta"><span>09/08/2026</span><span class="sep">·</span><span>Enbee</span><span class="sep">·</span><span>12 min</span></div>
+          </div>
+        </article>
+
+        <div class="hero-side">
+          <article class="term-card">
+            <div class="term-titlebar">
+              <div class="term-dots"><span></span><span></span><span></span></div>
+              <span class="term-path">~/linux/ufw-interface-graphique.md</span>
             </div>
-            <a href="articles.html" class="more">Voir tous →</a>
-        </div>
-        <div class="cards">
-            {% for blog in all_blogs %}
-                <article class="card">
-                    <div class="card-image blue">
-                        &lt;/&gt;
-                    </div>
-                    <div class="card-content">
-                        <span class="category">{{blog.author|capfirst}}</span>
-                        <h3>{{blog.title|capfirst}}</h3>
-                        <p>{{blog.content}}</p>
-                        <a href="articles/html-css-js.html" class="read"> Lire l'article →</a>
-                    </div>
-                </article>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-
-<section class="section light">
-    <div class="container">
-        <div class="section-title">
-            <div>
-                <span class="label">APPRENDRE</span>
-                <h2>Tutoriels populaires</h2>
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=700&q=80" alt="Pare-feu Linux UFW"></div>
+            <div class="term-body">
+              <span class="tag amber">Linux</span>
+              <h3><a href="article.html">Gérer le pare-feu UFW sous Linux avec une interface graphique</a></h3>
+              <div class="meta"><span>08/08/2026</span><span class="sep">·</span><span>7 min</span></div>
             </div>
-            <a href="{% url 'blog:tutorials' %}" class="more">Tous les tutoriels →</a>
-        </div>
-        <div class="tutorials">
-            <a href="tutoriels.html" class="tutorial">
-                <strong>01</strong>
-                <div>
-                    <h3>Installer Ubuntu étape par étape</h3>
-                    <p>Linux · Débutant</p>
-                </div>
-                <span>→</span>
-            </a>
-            <a href="articles/html-css-js.html" class="tutorial">
-                <strong>02</strong>
-                <div>
-                    <h3>Créer son premier site web</h3>
-                    <p>HTML · CSS · Débutant</p>
-                </div>
-                <span>→</span>
-            </a>
-            <a href="articles/git-github.html" class="tutorial">
-                <strong>03</strong>
-                <div>
-                    <h3>Apprendre Git et GitHub</h3>
-                    <p>Git · Débutant</p>
-                </div>
-                <span>→</span>
-            </a>
-        </div>
-    </div>
-</section>
+          </article>
 
-</main>
+          <article class="term-card">
+            <div class="term-titlebar">
+              <div class="term-dots"><span></span><span></span><span></span></div>
+              <span class="term-path">~/virtualisation/secure-boot-proxmox.md</span>
+            </div>
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=700&q=80" alt="Virtualisation Proxmox"></div>
+            <div class="term-body">
+              <span class="tag">Virtualisation</span>
+              <h3><a href="article.html">Proxmox VE : enrôler les certificats Secure Boot sur vos VM</a></h3>
+              <div class="meta"><span>07/08/2026</span><span class="sep">·</span><span>9 min</span></div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Sécurité informatique -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="chevron">&gt;</span> Sécurité informatique</h2>
+        <a class="see-all" href="#">voir_tout() →</a>
+      </div>
+
+      <div class="content-layout">
+        <div class="post-list">
+          <div class="post-row">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80" alt=""></div>
+            <div class="body">
+              <span class="tag red">Threat Intel</span>
+              <h3><a href="article.html">Windows Forensic — Partie 8 : explorer les Shellbags</a></h3>
+              <p class="excerpt">Analyse des artefacts NTUSER.DAT pour reconstituer l'activité de navigation d'un utilisateur.</p>
+              <div class="meta"><span>05/08/2026</span><span class="sep">·</span><span>Enbee</span><span class="sep">·</span><span>0 commentaire</span></div>
+            </div>
+          </div>
+          <div class="post-row">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80" alt=""></div>
+            <div class="body">
+              <span class="tag red">Blue Team</span>
+              <h3><a href="article.html">Durcir un serveur FortiGate en environnement d'entreprise</a></h3>
+              <p class="excerpt">Politiques de sécurité, segmentation VLAN et bonnes pratiques de journalisation.</p>
+              <div class="meta"><span>03/08/2026</span><span class="sep">·</span><span>Enbee</span><span class="sep">·</span><span>3 commentaires</span></div>
+            </div>
+          </div>
+          <div class="post-row">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&q=80" alt=""></div>
+            <div class="body">
+              <span class="tag red">Pentest</span>
+              <h3><a href="article.html">Nmap : scanner un réseau isolé via un tunnel SSH et proxychains</a></h3>
+              <p class="excerpt">Contourner l'absence d'accès direct à une zone réseau grâce au pivoting SSH.</p>
+              <div class="meta"><span>01/08/2026</span><span class="sep">·</span><span>Enbee</span><span class="sep">·</span><span>1 commentaire</span></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="sidebar">
+          <div class="side-box">
+            <div class="term-titlebar">
+              <div class="term-dots"><span></span><span></span><span></span></div>
+              <span class="term-path">system.log — populaires</span>
+            </div>
+            <div class="side-list">
+              <div class="side-item"><span class="num">01</span><div><a href="article.html">Sécuriser un VPS Linux : checklist complète</a><div class="meta">14 min de lecture</div></div></div>
+              <div class="side-item"><span class="num">02</span><div><a href="article.html">Comprendre le routage statique avec Cisco IOS</a><div class="meta">10 min de lecture</div></div></div>
+              <div class="side-item"><span class="num">03</span><div><a href="article.html">VLAN et segmentation réseau : le guide pratique</a><div class="meta">8 min de lecture</div></div></div>
+              <div class="side-item"><span class="num">04</span><div><a href="article.html">Docker : réseaux macvlan expliqués simplement</a><div class="meta">11 min de lecture</div></div></div>
+            </div>
+          </div>
+
+          <div class="newsletter-box">
+            <span class="tag amber">Newsletter</span>
+            <p>Un e-mail par semaine, uniquement des tutos IT — sans bruit.</p>
+            <div class="input-line">
+              <span>&gt;</span>
+              <input type="email" placeholder="votre@email.com">
+              <button>OK</button>
+            </div>
+          </div>
+
+          <div class="side-box">
+            <div class="term-titlebar">
+              <div class="term-dots"><span></span><span></span><span></span></div>
+              <span class="term-path">tags --list</span>
+            </div>
+            <div class="tags-cloud">
+              <a href="#">#linux</a>
+              <a href="#">#windows-server</a>
+              <a href="#">#docker</a>
+              <a href="#">#kubernetes</a>
+              <a href="#">#fortinet</a>
+              <a href="#">#vmware</a>
+              <a href="#">#cybersécurité</a>
+              <a href="#">#réseaux</a>
+              <a href="#">#django</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Sysadmin & Infra -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="chevron">&gt;</span> Sysadmin &amp; Infrastructure</h2>
+        <a class="see-all" href="#">voir_tout() →</a>
+      </div>
+
+      <div class="hero-grid">
+        <article class="term-card">
+          <div class="term-titlebar">
+            <div class="term-dots"><span></span><span></span><span></span></div>
+            <span class="term-path">~/reseaux/zabbix-ldap-ad.md</span>
+          </div>
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80" alt="Supervision réseau"></div>
+          <div class="term-body">
+            <span class="tag">Supervision</span>
+            <h3><a href="article.html">Zabbix : configurer l'authentification via Active Directory (LDAP/LDAPS)</a></h3>
+            <p class="excerpt">Connecter Zabbix à l'annuaire d'entreprise pour centraliser les accès des équipes techniques.</p>
+            <div class="meta"><span>29/07/2026</span><span class="sep">·</span><span>Enbee</span><span class="sep">·</span><span>15 min</span></div>
+          </div>
+        </article>
+
+        <div class="hero-side">
+          <article class="term-card">
+            <div class="term-titlebar">
+              <div class="term-dots"><span></span><span></span><span></span></div>
+              <span class="term-path">~/self-hosting/traefik-manager.md</span>
+            </div>
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=700&q=80" alt="Reverse proxy"></div>
+            <div class="term-body">
+              <span class="tag">Self-Hosting</span>
+              <h3><a href="article.html">Administrer son reverse proxy Traefik depuis une interface web</a></h3>
+              <div class="meta"><span>27/07/2026</span><span class="sep">·</span><span>6 min</span></div>
+            </div>
+          </article>
+
+          <article class="term-card">
+            <div class="term-titlebar">
+              <div class="term-dots"><span></span><span></span><span></span></div>
+              <span class="term-path">~/microsoft/tier-model.md</span>
+            </div>
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=700&q=80" alt="Active Directory"></div>
+            <div class="term-body">
+              <span class="tag amber">Active Directory</span>
+              <h3><a href="article.html">Microsoft Tier Model : durcir son AD on-premises</a></h3>
+              <div class="meta"><span>25/07/2026</span><span class="sep">·</span><span>10 min</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock content %}
 
-
-
-
-
-
-
-
+  
