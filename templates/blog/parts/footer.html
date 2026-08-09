@@ -11,8 +11,8 @@
         </div>
         <div>
             <h4>Navigation</h4>
-            <a href="{% url 'index_blog' %}">Accueil</a>
-            <a href="{% url 'posts_blog' %}">Articles</a>
+            <a href="{% url 'blog:index' %}">Accueil</a>
+            <a href="{% url 'blog:posts' %}">Articles</a>
             <a href="tutoriels.html">Tutoriels</a>
         </div>
         <div>
@@ -23,7 +23,7 @@
         </div>
         <div>
             <h4>Informations</h4>
-            <a href="{% url 'about_blog' %}">À propos</a>
+            <a href="{% url 'blog:about' %}">À propos</a>
         </div>
     </div>
     <div class="copyright">

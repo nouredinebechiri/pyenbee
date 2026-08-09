@@ -14,8 +14,8 @@
             <h1>La technologie, <span>simplement.</span></h1>
             <p>Actualités IT, programmation, Linux,cybersécurité et tutoriels pratiques pour apprendre facilement.</p>
             <div class="hero-buttons">
-                <a href="{% url 'posts_blog' %}" class="btn btn-primary">Voir les articles</a>
-                <a href="{% url 'tutorials_blog' %}" class="btn btn-secondary">Tutoriels</a>
+                <a href="{% url 'blog:posts' %}" class="btn btn-primary">Voir les articles</a>
+                <a href="{% url 'blog:tutorials' %}" class="btn btn-secondary">Tutoriels</a>
             </div>
         </div>
 
@@ -48,39 +48,19 @@
             <a href="articles.html" class="more">Voir tous →</a>
         </div>
         <div class="cards">
-            
-            <article class="card">
-                <div class="card-image blue">
-                    &lt;/&gt;
-                </div>
-                <div class="card-content">
-                    <span class="category">PROGRAMMATION</span>
-                    <h3>Apprendre HTML, CSS et JavaScript</h3>
-                    <p>Les bases pour commencer à créer des sites web modernes.</p>
-                    <a href="articles/html-css-js.html" class="read"> Lire l'article →</a>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-image purple">🐧</div>
-                <div class="card-content">
-                    <span class="category">LINUX</span>
-                    <h3>10 commandes Linux indispensables</h3>
-                    <p>Les commandes essentielles pourtravailler avec le terminal.</p>
-                    <a href="articles/linux-commandes.html" class="read">Lire l'article →</a>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-image green">🔐</div>
-                <div class="card-content">
-                    <span class="category">CYBERSÉCURITÉ</span>
-                    <h3>Comment sécuriser ses comptes ?</h3>
-                    <p>Les bonnes pratiques pour protéger vos comptes et vos données.</p>
-                    <a href="articles/cybersecurite.html" class="read"> Lire l'article → </a>
-                </div>
-            </article>
-
+            {% for blog in all_blogs %}
+                <article class="card">
+                    <div class="card-image blue">
+                        &lt;/&gt;
+                    </div>
+                    <div class="card-content">
+                        <span class="category">{{blog.author|capfirst}}</span>
+                        <h3>{{blog.title|capfirst}}</h3>
+                        <p>{{blog.content}}</p>
+                        <a href="articles/html-css-js.html" class="read"> Lire l'article →</a>
+                    </div>
+                </article>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -93,7 +73,7 @@
                 <span class="label">APPRENDRE</span>
                 <h2>Tutoriels populaires</h2>
             </div>
-            <a href="{% url 'tutorials_blog' %}" class="more">Tous les tutoriels →</a>
+            <a href="{% url 'blog:tutorials' %}" class="more">Tous les tutoriels →</a>
         </div>
         <div class="tutorials">
             <a href="tutoriels.html" class="tutorial">

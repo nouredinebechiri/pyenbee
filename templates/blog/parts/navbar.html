@@ -1,12 +1,13 @@
 <header class="header">
     <div class="container navbar">
-        <a href="{% url 'index_blog' %}" class="logo">enbee <span>Blog</span></a>
+        <a href="{% url 'blog:index' %}" class="logo">enbee <span>Blog</span></a>
         <nav id="nav">
-            <a class="active" href="{% url 'index_blog' %}">Accueil</a>
-            <a href="{% url 'posts_blog' %}">Articles</a>
-            <a href="{% url 'tutorials_blog' %}">Tutoriels</a>
-            <a href="{% url 'categories_blog' %}">Catégories</a>
-            <a href="{% url 'about_blog' %}">À propos</a>
+            <a href="{% url 'pages:index' %}">enbee</a>
+            <a class="active" href="{% url 'blog:index' %}">Accueil</a>
+            <a href="{% url 'blog:posts' %}">Articles</a>
+            <a href="{% url 'blog:tutorials' %}">Tutoriels</a>
+            <a href="{% url 'blog:categories' %}">Catégories</a>
+            <a href="{% url 'blog:about' %}">À propos</a>
         </nav>
         <div class="header-actions">
             <button id="themeBtn" class="icon-btn">🌙</button>

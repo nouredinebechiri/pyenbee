@@ -1,20 +1,21 @@
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
 
-def index_blog(request):
-    return render(request, 'blog/index.html', {})
+def index(request):
+    all_blogs = Blog.objects.all().order_by('-id')
+    return render(request, 'blog/index.html', {'all_blogs':all_blogs})
 
-def posts_blog(request):
+def posts(request):
     return render(request, 'blog/posts.html', {})
 
-def about_blog(request):
+def about(request):
     return render(request, 'blog/about.html', {})
 
-def tutorials_blog(request):
+def tutorials(request):
     return render(request, 'blog/tutorials.html', {})
 
-def categories_blog(request):
+def categories(request):
     return render(request, 'blog/categories.html', {})
 
 def linux(request):
