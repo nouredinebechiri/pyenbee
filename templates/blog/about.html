@@ -1,0 +1,65 @@
+{# templates/blog/about.html #}
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}À propos — SYSLOG{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="wrap">
+    <div class="prompt-line">
+      <span class="user">nb@syslog</span>:<span class="path">~</span>$ cat about.md <span class="cursor"></span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:12px;">
+  <div class="wrap">
+    <div class="content-layout">
+      <article class="prose" style="max-width:none;">
+        <h1 style="font-size:28px; margin-bottom:6px;">Qui suis-je</h1>
+        <p>Je m'appelle <strong>Nouredine Bechiri</strong>, alias <strong>Enbee</strong>. Je suis IT Solution
+          Architect et Systems &amp; Network Engineer, avec plus de 12 ans d'expérience en infrastructure,
+          virtualisation et cybersécurité.</p>
+
+        <p>J'ai travaillé sur des environnements critiques (broadcast, transport), où j'ai touché à peu près
+          à tout : virtualisation VMware (vSphere, vSAN, NSX), sécurité réseau Fortinet (FortiGate, FortiWeb,
+          FortiMail), réseaux Cisco, administration Linux, et plus récemment le monde cloud-native
+          (Docker, Kubernetes, Nginx).</p>
+
+        <h2 style="margin-top:2em;">Pourquoi ce blog</h2>
+        <p>SYSLOG est né d'une envie simple : partager, sous une forme concrète et sans détour, ce que
+          j'apprends et ce que j'ai appris sur le terrain. Pas de contenu marketing, pas de remplissage —
+          des tutoriels que j'aurais aimé trouver moi-même en cherchant une solution à 2h du matin.</p>
+
+        <h2 style="margin-top:2em;">Au-delà du blog</h2>
+        <p>J'anime aussi une communauté IT gratuite sur Telegram, où on échange sur ces mêmes sujets au
+          quotidien. Si le contenu du blog vous est utile, vous y êtes le bienvenu.</p>
+
+        <div class="tags-row" style="border-top:none; margin-top:2em; padding-top:0;">
+          <a class="tag" href="#">#vmware</a>
+          <a class="tag amber" href="#">#fortinet</a>
+          <a class="tag" href="#">#linux</a>
+          <a class="tag red" href="#">#cybersécurité</a>
+        </div>
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-box">
+          <div class="term-titlebar">
+            <div class="term-dots"><span></span><span></span><span></span></div>
+            <span class="term-path">contact.info</span>
+          </div>
+          <div class="side-list">
+            <div class="side-item"><span class="num">→</span><div><a href="{% url 'blog:contact' %}">Envoyer un message</a></div></div>
+            <div class="side-item"><span class="num">→</span><div><a href="https://t.me/" target="_blank" rel="noopener">Rejoindre le Telegram</a></div></div>
+            <div class="side-item"><span class="num">→</span><div><a href="https://github.com/nouredinebechiri" target="_blank" rel="noopener">Voir le GitHub</a></div></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

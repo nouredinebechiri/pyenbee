@@ -1,0 +1,138 @@
+{# templates/blog/home.html #}
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}SYSLOG — Blog IT{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="prompt-line">
+      <span class="user">nb@syslog</span>:<span class="path">~/derniers_articles</span>$ tail -f articles.log <span class="cursor"></span>
+    </div>
+
+    {% if hero_main %}
+    <div class="hero-grid">
+      <article class="term-card">
+        <div class="term-titlebar">
+          <div class="term-dots"><span></span><span></span><span></span></div>
+          <span class="term-path">~/{{ hero_main.category.slug }}/{{ hero_main.slug }}.md</span>
+        </div>
+        {% if hero_main.cover_image %}
+        <div class="thumb"><img src="{{ hero_main.cover_image.url }}" alt="{{ hero_main.title }}"></div>
+        {% endif %}
+        <div class="term-body">
+          <span class="tag{% if hero_main.category.color != 'teal' %} {{ hero_main.category.color }}{% endif %}">
+            {{ hero_main.category.name }}
+          </span>
+          <h3><a href="{{ hero_main.get_absolute_url }}">{{ hero_main.title }}</a></h3>
+          {% if hero_main.excerpt %}<p class="excerpt">{{ hero_main.excerpt }}</p>{% endif %}
+          <div class="meta">
+            <span>{{ hero_main.published_at|date:"d/m/Y" }}</span><span class="sep">·</span>
+            <span>{{ hero_main.author.get_full_name|default:hero_main.author.username }}</span><span class="sep">·</span>
+            <span>{{ hero_main.reading_time }} min</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="hero-side">
+        {% for article in hero_side %}
+        <article class="term-card">
+          <div class="term-titlebar">
+            <div class="term-dots"><span></span><span></span><span></span></div>
+            <span class="term-path">~/{{ article.category.slug }}/{{ article.slug }}.md</span>
+          </div>
+          {% if article.cover_image %}
+          <div class="thumb"><img src="{{ article.cover_image.url }}" alt="{{ article.title }}"></div>
+          {% endif %}
+          <div class="term-body">
+            <span class="tag{% if article.category.color != 'teal' %} {{ article.category.color }}{% endif %}">
+              {{ article.category.name }}
+            </span>
+            <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+            <div class="meta">
+              <span>{{ article.published_at|date:"d/m/Y" }}</span><span class="sep">·</span>
+              <span>{{ article.reading_time }} min</span>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- SECTIONS PAR CATÉGORIE -->
+{% for section in category_sections %}
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="chevron">&gt;</span> {{ section.category.name }}</h2>
+      <a class="see-all" href="{% url 'blog:category_detail' section.category.slug %}">voir_tout() →</a>
+    </div>
+
+    <div class="content-layout">
+      <div class="post-list">
+        {% for article in section.articles %}
+        <div class="post-row">
+          {% if article.cover_image %}
+          <div class="thumb"><img src="{{ article.cover_image.url }}" alt="{{ article.title }}"></div>
+          {% endif %}
+          <div class="body">
+            <span class="tag{% if article.category.color != 'teal' %} {{ article.category.color }}{% endif %}">
+              {{ article.category.name }}
+            </span>
+            <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+            {% if article.excerpt %}<p class="excerpt">{{ article.excerpt }}</p>{% endif %}
+            <div class="meta">
+              <span>{{ article.published_at|date:"d/m/Y" }}</span><span class="sep">·</span>
+              <span>{{ article.author.get_full_name|default:article.author.username }}</span><span class="sep">·</span>
+              <span>{{ article.reading_time }} min</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% if forloop.first %}
+      <aside class="sidebar">
+        <div class="side-box">
+          <div class="term-titlebar">
+            <div class="term-dots"><span></span><span></span><span></span></div>
+            <span class="term-path">system.log — populaires</span>
+          </div>
+          <div class="side-list">
+            {% for article in popular_articles %}
+            <div class="side-item">
+              <span class="num">{{ forloop.counter|stringformat:"02d" }}</span>
+              <div>
+                <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+                <div class="meta">{{ article.reading_time }} min de lecture</div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="side-box">
+          <div class="term-titlebar">
+            <div class="term-dots"><span></span><span></span><span></span></div>
+            <span class="term-path">tags --list</span>
+          </div>
+          <div class="tags-cloud">
+            {% for tag in all_tags %}
+              <a href="{% url 'blog:tag_detail' tag.slug %}">#{{ tag.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </aside>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{# templates/blog/category_detail.html #}
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}{{ category.name }} — SYSLOG{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="wrap">
+    <div class="prompt-line">
+      <span class="user">nb@syslog</span>:<span class="path">~/{{ category.slug }}</span>$ ls -la <span class="cursor"></span>
+    </div>
+    <div class="section-head" style="margin-bottom:0;">
+      <h2><span class="chevron">&gt;</span> {{ category.name }}</h2>
+    </div>
+    {% if category.description %}<p class="excerpt" style="margin-top:8px;">{{ category.description }}</p>{% endif %}
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="content-layout">
+      <div class="post-list">
+        {% for article in articles %}
+        <div class="post-row">
+          {% if article.cover_image %}
+          <div class="thumb"><img src="{{ article.cover_image.url }}" alt="{{ article.title }}"></div>
+          {% endif %}
+          <div class="body">
+            <span class="tag{% if article.category.color != 'teal' %} {{ article.category.color }}{% endif %}">
+              {{ article.category.name }}
+            </span>
+            <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+            {% if article.excerpt %}<p class="excerpt">{{ article.excerpt }}</p>{% endif %}
+            <div class="meta">
+              <span>{{ article.published_at|date:"d/m/Y" }}</span><span class="sep">·</span>
+              <span>{{ article.author.get_full_name|default:article.author.username }}</span><span class="sep">·</span>
+              <span>{{ article.reading_time }} min</span>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p class="excerpt">Aucun article publié pour l'instant dans cette catégorie.</p>
+        {% endfor %}
+
+        {% if is_paginated %}
+        <div class="prompt-line" style="margin-top:24px; justify-content:space-between;">
+          {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">&larr; précédent</a>
+          {% else %}<span></span>{% endif %}
+          <span>page {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">suivant &rarr;</a>
+          {% else %}<span></span>{% endif %}
+        </div>
+        {% endif %}
+      </div>
+
+      <aside class="sidebar">
+        <div class="side-box">
+          <div class="term-titlebar">
+            <div class="term-dots"><span></span><span></span><span></span></div>
+            <span class="term-path">categories --list</span>
+          </div>
+          <div class="tags-cloud">
+            {% for cat in nav_categories %}
+              <a href="{% url 'blog:category_detail' cat.slug %}">{{ cat.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

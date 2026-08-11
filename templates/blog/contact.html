@@ -1,0 +1,87 @@
+{# templates/blog/contact.html #}
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}Contact — SYSLOG{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="wrap">
+    <div class="prompt-line">
+      <span class="user">nb@syslog</span>:<span class="path">~</span>$ mail --compose <span class="cursor"></span>
+    </div>
+    <div class="section-head" style="margin-bottom:0;">
+      <h2><span class="chevron">&gt;</span> Contact</h2>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="content-layout">
+
+      <div class="term-card" style="max-width:640px;">
+        <div class="term-titlebar">
+          <div class="term-dots"><span></span><span></span><span></span></div>
+          <span class="term-path">~/contact/nouveau_message.form</span>
+        </div>
+        <div class="term-body" style="padding:22px;">
+
+          {% if messages %}
+            {% for message in messages %}
+              <div class="callout" style="margin-bottom:16px;">
+                <span class="icon">✓</span><span>{{ message }}</span>
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div style="margin-bottom:16px;">
+              <label for="{{ field.id_for_label }}" style="display:block; font-family:var(--mono); font-size:12px; color:var(--text-dim); margin-bottom:6px;">
+                {{ field.label }}
+              </label>
+              {{ field }}
+              {% if field.errors %}
+                <div style="color:var(--red); font-family:var(--mono); font-size:11.5px; margin-top:4px;">
+                  {{ field.errors|striptags }}
+                </div>
+              {% endif %}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn-cta" style="border:none; cursor:pointer;">envoyer_message()</button>
+          </form>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="side-box">
+          <div class="term-titlebar">
+            <div class="term-dots"><span></span><span></span><span></span></div>
+            <span class="term-path">infos.txt</span>
+          </div>
+          <div class="side-list">
+            <div class="side-item"><span class="num">→</span><div>Réponse sous 48h en général</div></div>
+            <div class="side-item"><span class="num">→</span><div>Aussi disponible sur <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a></div></div>
+            <div class="side-item"><span class="num">→</span><div>Pour du freelance, précisez le périmètre du projet</div></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* stylise les widgets Django par défaut (input/textarea) dans le thème du site */
+  input[type="text"], input[type="email"], textarea{
+    width:100%; border:1px solid var(--border); border-radius:4px; background:var(--bg);
+    color:var(--text); font-family:var(--sans); font-size:13.5px; padding:11px 12px; outline:none;
+  }
+  input:focus, textarea:focus{ border-color:var(--amber); }
+</style>
+
+{% endblock %}

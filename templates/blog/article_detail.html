@@ -1,0 +1,124 @@
+{# templates/blog/article_detail.html #}
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}{{ article.title }} — SYSLOG{% endblock %}
+
+{% block progress_bar %}<div class="progress-bar"></div>{% endblock %}
+
+{% block content %}
+
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="{% url 'blog:home' %}">~</a><span class="sep">/</span>
+    <a href="{% url 'blog:category_detail' article.category.slug %}">{{ article.category.name|lower }}</a><span class="sep">/</span>
+    <span>{{ article.slug }}.md</span>
+  </div>
+
+  <div class="article-head">
+    <span class="tag{% if article.category.color != 'teal' %} {{ article.category.color }}{% endif %}">
+      {{ article.category.name }}
+    </span>
+    <h1>{{ article.title }}</h1>
+    {% if article.excerpt %}<p class="dek">{{ article.excerpt }}</p>{% endif %}
+
+    <div class="author-row">
+      <div class="avatar">{{ article.author.get_full_name|default:article.author.username|slice:":2"|upper }}</div>
+      <div>
+        <div class="name">{{ article.author.get_full_name|default:article.author.username }}</div>
+        <div>{{ article.author.job_title|default:"Auteur" }}</div>
+      </div>
+      <span class="sep">·</span>
+      <span>{{ article.published_at|date:"d/m/Y" }}</span>
+      <span class="sep">·</span>
+      <span>{{ article.reading_time }} min de lecture</span>
+    </div>
+  </div>
+</div>
+
+{% if article.cover_image %}
+<div class="wrap">
+  <figure class="article-cover">
+    <img src="{{ article.cover_image.url }}" alt="{{ article.title }}">
+    {% if article.cover_caption %}<figcaption># {{ article.cover_caption }}</figcaption>{% endif %}
+  </figure>
+</div>
+{% endif %}
+
+<div class="wrap article-layout">
+
+  <article class="prose">
+    {{ article.content|safe }}
+    {# ↑ si le contenu est écrit en Markdown, remplace par : #}
+    {# {{ article.content|markdownify }}  (via django-markdownx ou mistune) #}
+
+    {% if article.tags.exists %}
+    <div class="tags-row">
+      {% for tag in article.tags.all %}
+        <a class="tag" href="{% url 'blog:tag_detail' tag.slug %}">#{{ tag.name }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="author-box">
+      <div class="avatar">{{ article.author.get_full_name|default:article.author.username|slice:":2"|upper }}</div>
+      <div>
+        <h4>{{ article.author.get_full_name|default:article.author.username }}</h4>
+        <p>{{ article.author.bio|default:"" }}</p>
+      </div>
+    </div>
+  </article>
+
+  <aside class="sidebar">
+    {% if table_of_contents %}
+    <div class="toc-box">
+      <div class="term-titlebar">
+        <div class="term-dots"><span></span><span></span><span></span></div>
+        <span class="term-path">sommaire.toc</span>
+      </div>
+      <ul class="toc-list">
+        {% for heading in table_of_contents %}
+          <li{% if heading.level == 3 %} class="sub"{% endif %}>
+            <a href="#{{ heading.id }}">{{ heading.text }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </aside>
+</div>
+
+{% if related_articles %}
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="chevron">&gt;</span> Articles liés</h2>
+    </div>
+    <div class="related-grid">
+      {% for related in related_articles %}
+      <article class="term-card">
+        <div class="term-titlebar">
+          <div class="term-dots"><span></span><span></span><span></span></div>
+          <span class="term-path">~/{{ related.category.slug }}/{{ related.slug }}.md</span>
+        </div>
+        {% if related.cover_image %}
+        <div class="thumb"><img src="{{ related.cover_image.url }}" alt="{{ related.title }}"></div>
+        {% endif %}
+        <div class="term-body">
+          <span class="tag{% if related.category.color != 'teal' %} {{ related.category.color }}{% endif %}">
+            {{ related.category.name }}
+          </span>
+          <h3><a href="{{ related.get_absolute_url }}">{{ related.title }}</a></h3>
+          <div class="meta">
+            <span>{{ related.published_at|date:"d/m/Y" }}</span><span class="sep">·</span>
+            <span>{{ related.reading_time }} min</span>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

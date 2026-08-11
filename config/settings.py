@@ -39,10 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',    
     'catalog.apps.CatalogConfig',
-    'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'blog.apps.BlogConfig',
-    'taggit',
+    # 'taggit',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +124,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'config/static')
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.ton-fournisseur.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ton-adresse@example.com'
+EMAIL_HOST_PASSWORD = 'ton-mot-de-passe-ou-app-password'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+CONTACT_EMAIL = 'ton-adresse-perso@example.com'
