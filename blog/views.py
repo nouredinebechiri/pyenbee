@@ -7,9 +7,11 @@ Vues du blog SYSLOG.
 import re
 
 from django.contrib import messages
+from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic import DetailView, ListView, TemplateView, View
 from django.views.generic.edit import FormView
 
 from .forms import ContactForm
@@ -157,6 +159,51 @@ class TagDetailView(NavContextMixin, ListView):
         context["tag"] = self.tag
         context["all_tags"] = Tag.objects.all()
         return context
+
+
+# ---------------------------------------------------------------------------
+# Recherche (AJAX, appelée depuis la modale du header)
+# ---------------------------------------------------------------------------
+
+class SearchAPIView(View):
+    """
+    GET /recherche/?q=... -> JSON { "query": "...", "results": [...] }
+    Consommée en JS par script.js (fetch), pour remplir la modale de
+    recherche inline sans recharger la page.
+    """
+
+    MIN_QUERY_LENGTH = 2
+    MAX_RESULTS = 8
+
+    def get(self, request, *args, **kwargs):
+        query = request.GET.get("q", "").strip()
+
+        if len(query) < self.MIN_QUERY_LENGTH:
+            return JsonResponse({"query": query, "results": []})
+
+        articles = (
+            Article.published.filter(
+                Q(title__icontains=query)
+                | Q(excerpt__icontains=query)
+                | Q(content__icontains=query)
+            )
+            .select_related("category")
+            .distinct()[: self.MAX_RESULTS]
+        )
+
+        results = [
+            {
+                "title": article.title,
+                "url": article.get_absolute_url(),
+                "category": article.category.name,
+                "category_color": article.category.color,
+                "excerpt": article.excerpt,
+                "date": article.published_at.strftime("%d/%m/%Y"),
+            }
+            for article in articles
+        ]
+
+        return JsonResponse({"query": query, "results": results})
 
 
 # ---------------------------------------------------------------------------

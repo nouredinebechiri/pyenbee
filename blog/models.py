@@ -1,3 +1,14 @@
+"""
+blog/models.py
+
+Modèles Django pour le site SYSLOG (blog IT).
+
+Hypothèses reprises de ton architecture existante :
+- Tu as déjà une app `accounts` avec un CustomUser (AUTH_USER_MODEL) :
+  les FK vers l'auteur pointent donc sur settings.AUTH_USER_MODEL plutôt
+  que de dupliquer un modèle Author.
+- Pillow est installé (nécessaire pour les ImageField).
+"""
 
 import math
 

@@ -5,24 +5,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% block title %}SYSLOG — Blog IT{% endblock %}</title>
+<title>{% block title %}Blog IT{% endblock %}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'blog/css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/blog-styles.css' %}">
 {% block extra_head %}{% endblock %}
 </head>
 <body>
 
 {% block progress_bar %}{% endblock %}
 
+<!-- MODALE DE RECHERCHE -->
+<div class="search-modal" id="searchModal" data-search-url="{% url 'blog:search_api' %}">
+  <div class="search-modal-inner">
+    <div class="search-input-row">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Rechercher un article..." autocomplete="off">
+      <button class="search-close" id="searchClose" aria-label="fermer la recherche">&times;</button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <div class="search-hint">Tapez au moins 2 caractères…</div>
+    </div>
+  </div>
+</div>
+
 <!-- TOPLINE -->
 <div class="topline">
   <div class="wrap">
-    <div class="status"><span class="dot-live"></span> système à jour — dernière publication il y a 2h</div>
+    <div class="status"><span class="dot-live"></span> <a href="/">Nouredine Bechiri</a> </div>
     <div class="social">
-      <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
-      <a href="https://github.com" aria-label="GitHub" target="_blank" rel="noopener">gh</a>
-      <a href="https://discord.com" aria-label="Discord" target="_blank" rel="noopener">disc</a>
+      <a href="https://linkedin.com/in/nouredinebechiri" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+      <!--
+        <a href="https://github.com" aria-label="GitHub" target="_blank" rel="noopener">gh</a>
+        <a href="https://discord.com" aria-label="Discord" target="_blank" rel="noopener">disc</a>
+      -->
     </div>
   </div>
 </div>
@@ -31,8 +47,7 @@
 <header class="site">
   <div class="wrap">
     <a class="logo" href="{% url 'blog:home' %}">
-      <span class="mark">n/b</span>
-      SYSLOG<span class="tag">// blog IT</span>
+      <span class="mark">__nb__</span>{% comment %} <span class="tag">blog IT</span> {% endcomment %}
     </a>
     <nav class="main">
       {% for category in nav_categories %}
@@ -43,14 +58,14 @@
       {% endfor %}
     </nav>
     <div class="header-actions">
-      <div class="btn-search">
+      <button class="btn-search" id="searchTrigger" aria-label="ouvrir la recherche">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </div>
+      </button>
       <button class="btn-theme" aria-label="basculer le thème">
         <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>
         <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <a class="btn-cta" href="{% url 'blog:contact' %}">./contact</a>
+      <a class="btn-cta" href="{% url 'blog:contact' %}">Contact</a>
       <button class="btn-burger" aria-label="menu">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -66,9 +81,9 @@
     <div class="footer-grid">
       <div class="footer-about">
         <a class="logo" href="{% url 'blog:home' %}" style="margin-bottom:14px; display:flex;">
-          <span class="mark">n/b</span> SYSLOG
+          <span class="mark">__nb__</span>
         </a>
-        <p>Tutoriels et notes techniques sur l'administration système, les réseaux et la cybersécurité — écrits par Enbee, IT Solution Architect.</p>
+        <p>Tutoriels et notes techniques sur l'infrastructure, les réseaux et la cybersécurité.</p>
       </div>
       <div>
         <h4>Contenu</h4>
@@ -83,26 +98,26 @@
         <ul>
           <li><a href="{% url 'blog:about' %}">Qui suis-je</a></li>
           <li><a href="{% url 'blog:contact' %}">Contact</a></li>
-          <li><a href="#">Mentions légales</a></li>
+          <!-- <li><a href="#">Mentions légales</a></li> -->
         </ul>
       </div>
       <div>
         <h4>Communauté</h4>
         <ul>
-          <li><a href="https://t.me/" target="_blank" rel="noopener">Telegram</a></li>
-          <li><a href="https://github.com/nouredinebechiri" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://t.me/nouredinebechiri" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://wa.me/qr/CGO7UGQV2W7NE1" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://linkedin.com/in/nouredinebechiri" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>SYSLOG © {% now "Y" %} — Enbee</span>
-      <span>build v1.2 — status: <span style="color:var(--teal)">online</span></span>
+      <span>Nouredine Bechiri © Tous droits réservés {% now "Y" %}</span>
+      {% comment %} <span>build v1.3 — status: <span style="color:var(--teal)">online</span></span> {% endcomment %}
     </div>
   </div>
 </footer>
 
-<script src="{% static 'blog/js/script.js' %}"></script>
+<script src="{% static 'js/blog-script.js' %}"></script>
 {% block extra_js %}{% endblock %}
 </body>
 </html>
