@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('blog/', include('blog.urls')),
     path('catalog/', include('catalog.urls')),
-    # path('', RedirectView.as_view(url='catalog/')),
+
 ]
 
 if settings.DEBUG:

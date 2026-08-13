@@ -12,7 +12,7 @@
   <div class="breadcrumb">
     <a href="{% url 'blog:home' %}">~</a><span class="sep">/</span>
     <a href="{% url 'blog:category_detail' article.category.slug %}">{{ article.category.name|lower }}</a><span class="sep">/</span>
-    <span>{{ article.slug }}.md</span>
+    <span>{{ article.slug }}</span>
   </div>
 
   <div class="article-head">
@@ -23,21 +23,22 @@
     {% if article.excerpt %}<p class="dek">{{ article.excerpt }}</p>{% endif %}
 
     <div class="author-row">
-      <div class="avatar">{{ article.author.get_full_name|default:article.author.username|slice:":2"|upper }}</div>
+      {% comment %} <div class="avatar">{{ article.author.get_full_name|default:article.author.username|slice:":2"|upper }}</div> {% endcomment %}
       <div>
-        <div class="name">{{ article.author.get_full_name|default:article.author.username }}</div>
-        <div>{{ article.author.job_title|default:"Auteur" }}</div>
+        <div class="name">{{ article.author.get_full_name|default:article.author.username|title }}</div>
+        {% comment %} <div>{{ article.author.job_title|default:"Auteur" }}</div> {% endcomment %}
       </div>
-      <span class="sep">·</span>
+      {% comment %} <span class="sep">·</span> {% endcomment %}
       <span>{{ article.published_at|date:"d/m/Y" }}</span>
-      <span class="sep">·</span>
-      <span>{{ article.reading_time }} min de lecture</span>
+      {% comment %} <span class="sep">·</span> {% endcomment %}
+      {% comment %} <span>{{ article.reading_time }} min de lecture</span> {% endcomment %}
     </div>
   </div>
 </div>
 
 {% if article.cover_image %}
 <div class="wrap">
+  
   <figure class="article-cover">
     <img src="{{ article.cover_image.url }}" alt="{{ article.title }}">
     {% if article.cover_caption %}<figcaption># {{ article.cover_caption }}</figcaption>{% endif %}
@@ -48,28 +49,31 @@
 <div class="wrap article-layout">
 
   <article class="prose">
-    {{ article.content|safe }}
+    
+    {{ article.rendred_markdown|safe }} {% comment %} {{ article.content|safe }} {% endcomment %}
     {# ↑ si le contenu est écrit en Markdown, remplace par : #}
     {# {{ article.content|markdownify }}  (via django-markdownx ou mistune) #}
 
     {% if article.tags.exists %}
     <div class="tags-row">
+      
       {% for tag in article.tags.all %}
         <a class="tag" href="{% url 'blog:tag_detail' tag.slug %}">#{{ tag.name }}</a>
       {% endfor %}
     </div>
     {% endif %}
 
-    <div class="author-box">
+    {% comment %} <div class="author-box">
       <div class="avatar">{{ article.author.get_full_name|default:article.author.username|slice:":2"|upper }}</div>
       <div>
         <h4>{{ article.author.get_full_name|default:article.author.username }}</h4>
         <p>{{ article.author.bio|default:"" }}</p>
       </div>
-    </div>
+    </div> {% endcomment %}
   </article>
 
   <aside class="sidebar">
+    
     {% if table_of_contents %}
     <div class="toc-box">
       <div class="term-titlebar">

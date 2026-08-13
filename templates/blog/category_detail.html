@@ -9,10 +9,10 @@
 <section class="hero">
   <div class="wrap">
     <div class="prompt-line">
-      <span class="user">nb@syslog</span>:<span class="path">~/{{ category.slug }}</span>$ ls -la <span class="cursor"></span>
+      {% comment %} <span class="user">nb@syslog</span>:<span class="path">~/{{ category.slug }}</span>$ ls -la  {% endcomment %}
     </div>
     <div class="section-head" style="margin-bottom:0;">
-      <h2><span class="chevron">&gt;</span> {{ category.name }}</h2>
+      <h2><span class="chevron">&gt;</span> {{ category.name|capfirst }} <span class="cursor"></span></h2>
     </div>
     {% if category.description %}<p class="excerpt" style="margin-top:8px;">{{ category.description }}</p>{% endif %}
   </div>
@@ -35,8 +35,8 @@
             {% if article.excerpt %}<p class="excerpt">{{ article.excerpt }}</p>{% endif %}
             <div class="meta">
               <span>{{ article.published_at|date:"d/m/Y" }}</span><span class="sep">·</span>
-              <span>{{ article.author.get_full_name|default:article.author.username }}</span><span class="sep">·</span>
-              <span>{{ article.reading_time }} min</span>
+              <span>{{ article.author.get_full_name|default:article.author.username|title }}</span><span class="sep">·</span>
+              {% comment %} <span>{{ article.reading_time }} min</span> {% endcomment %}
             </div>
           </div>
         </div>

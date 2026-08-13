@@ -18,6 +18,8 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 
+import markdown
+
 
 # ---------------------------------------------------------------------------
 # Catégorie & Tag
@@ -114,6 +116,9 @@ class Article(models.Model):
         blank=True,
         help_text="Résumé court affiché sur les cartes et sous le titre (.excerpt / .dek).",
     )
+    
+    
+     
     content = models.TextField(
         "contenu",
         help_text="Corps de l'article. Peut être écrit en Markdown si tu utilises "
@@ -187,6 +192,11 @@ class Article(models.Model):
     @property
     def is_published(self):
         return self.status == self.Status.PUBLISHED and self.published_at <= timezone.now()
+
+    @property
+    def rendred_markdown(self):
+        return markdown.markdown(self.content)
+        
 
 
 # ---------------------------------------------------------------------------

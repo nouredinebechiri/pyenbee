@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'catalog.apps.CatalogConfig',
     'pages.apps.PagesConfig',
     'blog.apps.BlogConfig',
+    'markdownx',
     # 'taggit',
 ]
 

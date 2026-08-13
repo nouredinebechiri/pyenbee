@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% block title %}Blog IT{% endblock %}</title>
+<title>{% block title %}{% endblock %}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/blog-styles.css' %}">
@@ -47,13 +47,13 @@
 <header class="site">
   <div class="wrap">
     <a class="logo" href="{% url 'blog:home' %}">
-      <span class="mark">__nb__</span>{% comment %} <span class="tag">blog IT</span> {% endcomment %}
+      <span class="mark">enbeeform</span>{% comment %} <span class="tag">blog IT</span> {% endcomment %}
     </a>
     <nav class="main">
       {% for category in nav_categories %}
         <a href="{% url 'blog:category_detail' category.slug %}"
            class="{% if request.resolver_match.kwargs.slug == category.slug %}active{% endif %}">
-          {{ category.name }}
+          {{ category.name|capfirst }}
         </a>
       {% endfor %}
     </nav>
@@ -81,9 +81,9 @@
     <div class="footer-grid">
       <div class="footer-about">
         <a class="logo" href="{% url 'blog:home' %}" style="margin-bottom:14px; display:flex;">
-          <span class="mark">__nb__</span>
+          <span class="mark">enbeeform</span>
         </a>
-        <p>Tutoriels et notes techniques sur l'infrastructure, les réseaux et la cybersécurité.</p>
+        <p>Actualités, tutos et conseils sur l’IT et la cybersécurité</p>
       </div>
       <div>
         <h4>Contenu</h4>
@@ -96,7 +96,7 @@
       <div>
         <h4>À propos</h4>
         <ul>
-          <li><a href="{% url 'blog:about' %}">Qui suis-je</a></li>
+          <li><a href="{% url 'blog:about' %}">enbeeform</a></li>
           <li><a href="{% url 'blog:contact' %}">Contact</a></li>
           <!-- <li><a href="#">Mentions légales</a></li> -->
         </ul>
