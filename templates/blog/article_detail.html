@@ -38,7 +38,6 @@
 
 {% if article.cover_image %}
 <div class="wrap">
-  
   <figure class="article-cover">
     <img src="{{ article.cover_image.url }}" alt="{{ article.title }}">
     {% if article.cover_caption %}<figcaption># {{ article.cover_caption }}</figcaption>{% endif %}
@@ -49,9 +48,8 @@
 <div class="wrap article-layout">
 
   <article class="prose">
-    
-    {{ article.rendred_markdown|safe }} {% comment %} {{ article.content|safe }} {% endcomment %}
-    {# ↑ si le contenu est écrit en Markdown, remplace par : #}
+    {{ article.rendered_markdown|safe }}
+    {% comment %}  tenu est écrit en Markdown, remplace par : #}
     {# {{ article.content|markdownify }}  (via django-markdownx ou mistune) #}
 
     {% if article.tags.exists %}

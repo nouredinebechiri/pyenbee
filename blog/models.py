@@ -115,9 +115,7 @@ class Article(models.Model):
         max_length=300,
         blank=True,
         help_text="Résumé court affiché sur les cartes et sous le titre (.excerpt / .dek).",
-    )
-    
-    
+    )    
      
     content = models.TextField(
         "contenu",
@@ -194,8 +192,11 @@ class Article(models.Model):
         return self.status == self.Status.PUBLISHED and self.published_at <= timezone.now()
 
     @property
-    def rendred_markdown(self):
-        return markdown.markdown(self.content)
+    def rendered_markdown(self):
+        return markdown.markdown(
+            self.content,
+            extensions=['toc', 'fenced_code', 'tables'],
+    )
         
 
 

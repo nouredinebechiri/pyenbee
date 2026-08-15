@@ -130,6 +130,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.toc',
+    'markdown.extensions.fenced_code',  # pour tes blocs de code
+    'markdown.extensions.tables',
+]
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.ton-fournisseur.com'
 EMAIL_PORT = 587
