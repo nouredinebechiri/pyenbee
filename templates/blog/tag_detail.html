@@ -8,9 +8,9 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="prompt-line">
+    {% comment %} <div class="prompt-line">
       <span class="user">nb@syslog</span>:<span class="path">~/tags</span>$ grep -r "#{{ tag.name }}" articles/ <span class="cursor"></span>
-    </div>
+    </div> {% endcomment %}
     <div class="section-head" style="margin-bottom:0;">
       <h2><span class="chevron">&gt;</span> #{{ tag.name }}</h2>
     </div>
@@ -60,7 +60,7 @@
         <div class="side-box">
           <div class="term-titlebar">
             <div class="term-dots"><span></span><span></span><span></span></div>
-            <span class="term-path">tags --list</span>
+            <span class="term-path">tags</span>
           </div>
           <div class="tags-cloud">
             {% for other_tag in all_tags %}
